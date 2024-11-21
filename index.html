@@ -158,16 +158,16 @@
         }
 
         .npc {
-            width: 90px;
-            height: 90px;
-            position: absolute;
-            bottom: 100px;
-            z-index: 1;
-            background-repeat: no-repeat;
-            background-position: center;
-            background-size: contain;
-            transition: transform 0.3s;
-        }
+    width: 90px;
+    height: 90px;
+    position: absolute;
+    bottom: 100px;
+    z-index: 1;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    transition: transform 0.3s;
+}
 
         .structure {
             position: absolute;
@@ -255,6 +255,8 @@
             font-size: 14px;
             display: none;
         }
+
+    
     </style>
 </head>
 <body>
@@ -302,172 +304,282 @@
 
     <script>
         const player = document.getElementById('player');
-        const dialogBox = document.getElementById('dialog-box');
-        const dialogText = document.getElementById('dialog-text');
-        const choiceContainer = document.getElementById('choice-container');
-        const reputationIndicator = document.getElementById('reputation-indicator');
-        const gameWorld = document.getElementById('game-world');
-        const viewport = document.getElementById('viewport');
-        const gameContainer = document.getElementById('game-container');
-        const controlsHint = document.getElementById('controls-hint');
+const dialogBox = document.getElementById('dialog-box');
+const dialogText = document.getElementById('dialog-text');
+const choiceContainer = document.getElementById('choice-container');
+const reputationIndicator = document.getElementById('reputation-indicator');
+const gameWorld = document.getElementById('game-world');
+const viewport = document.getElementById('viewport');
+const gameContainer = document.getElementById('game-container');
+const controlsHint = document.getElementById('controls-hint');
         
-        const startScreen = document.getElementById('start-screen');
-        const startButton = document.getElementById('start-button');
-        const tutorialOverlay = document.getElementById('tutorial-overlay');
-        const tutorialBox = document.getElementById('tutorial-box');
-        const tutorialText = document.getElementById('tutorial-text');
-        const tutorialNext = document.getElementById('tutorial-next');
-        const narratorContainer = document.getElementById('narrator-container');
-        const narratorText = document.getElementById('narrator-text');
+const startScreen = document.getElementById('start-screen');
+const startButton = document.getElementById('start-button');
+const tutorialOverlay = document.getElementById('tutorial-overlay');
+const tutorialBox = document.getElementById('tutorial-box');
+const tutorialText = document.getElementById('tutorial-text');
+const tutorialNext = document.getElementById('tutorial-next');
+const narratorContainer = document.getElementById('narrator-container');
+const narratorText = document.getElementById('narrator-text');
 
-        let playerX = 100;
-        let worldX = 0;
-        let reputation = 0;
-        let isDialogActive = false;
-        let currentNPC = null;
-        let playerSpeed = 5;
-        let gameStarted = false;
+let playerX = 100;
+let worldX = 0;
+let reputation = 0;
+let isDialogActive = false;
+let currentNPC = null;
+let playerSpeed = 5;
+let gameStarted = false;
 
-        let isJumping = false;
-        let isGrounded = true;
-        let jumpHeight = 100;
-        const maxJumpHeight = 300;
-        const jumpSpeed = 20;
-        const fallSpeed = 15;
+let isJumping = false;
+let isGrounded = true;
+let jumpHeight = 100;
+const maxJumpHeight = 300;
+const jumpSpeed = 20;
+const fallSpeed = 15;
 
-        const npcs = [
-            {
-                id: 'merchant',
-                x: 300,
-                type: 'Mercador',
-                sprite: 'img/bonecoNPCTeste.png'
-            },
-            {
-                id: 'quest_giver',
-                x: 800,
-                type: 'Aldeão',
-                sprite: 'img/bonecoNPCTeste2.png'
-            },
-            {
-                id: 'wizard',
-                x: 1500,
-                type: 'Mago',
-                sprite: 'img/bonecoNPCTeste.png'
-            }
-        ];
+const npcs = [
+    {
+        id: 'merchant',
+        x: 300,
+        type: 'Mercador',
+        sprite: 'img/bonecoNPCTeste.png'
+    },
+    {
+        id: 'quest_giver',
+        x: 800,
+        type: 'Aldeão',
+        sprite: 'img/bonecoNPCTeste2.png'
+    },
+    {
+        id: 'wizard',
+        x: 1500,
+        type: 'Mago',
+        sprite: 'img/bonecoNPCTeste.png'
+    }
+];
 
-        const structures = [
-            { x: 500, width: 100, height: 150, color: 'rgba(139, 69, 19, 0.7)', type: 'house' },
-            { x: 1200, width: 150, height: 200, color: 'rgba(74, 74, 74, 0.7)', type: 'tower' },
-            { x: 2000, width: 120, height: 180, color: 'rgba(139, 69, 19, 0.7)', type: 'inn' }
-        ];
+function createWorldElements() {
+    npcs.forEach(npc => {
+        const npcElement = document.createElement('div');
+        npcElement.className = 'npc';
+        npcElement.style.left = `${npc.x}px`;
+        npcElement.style.backgroundImage = `url('${npc.sprite}')`;
+        npcElement.id = npc.id;
+        gameWorld.appendChild(npcElement);
+    });
 
-        function createWorldElements() {
-            npcs.forEach(npc => {
-                const npcElement = document.createElement('div');
-                npcElement.className = 'npc';
-                npcElement.style.left = `${npc.x}px`;
-                npcElement.style.backgroundImage = `url('${npc.sprite}')`;
-                npcElement.id = npc.id;
-                gameWorld.appendChild(npcElement);
-            });
+    structures.forEach(structure => {
+        const structureElement = document.createElement('div');
+        structureElement.className = 'structure';
+        structureElement.style.backgroundColor = structure.color;
+        structureElement.style.width = `${structure.width}px`;
+        structureElement.style.height = `${structure.height}px`;
+        structureElement.style.left = `${structure.x}px`;
+        gameWorld.appendChild(structureElement);
+    });
+}
 
-            structures.forEach(structure => {
-                const structureElement = document.createElement('div');
-                structureElement.className = 'structure';
-                structureElement.style.backgroundColor = structure.color;
-                structureElement.style.width = `${structure.width}px`;
-                structureElement.style.height = `${structure.height}px`;
-                structureElement.style.left = `${structure.x}px`;
-                gameWorld.appendChild(structureElement);
-            });
+const structures = [
+    { x: 500, width: 100, height: 150, color: 'rgba(139, 69, 19, 0.7)', type: 'house' },
+    { x: 1200, width: 150, height: 200, color: 'rgba(74, 74, 74, 0.7)', type: 'tower' },
+    { x: 2000, width: 120, height: 180, color: 'rgba(139, 69, 19, 0.7)', type: 'inn' }
+];
+
+let currentTutorialStep = 0;
+const tutorialSteps = [
+    "Bem-vindo ao nosso RPG Interativo! Vamos aprender os controles básicos.",
+    "Use as teclas A/← para mover para esquerda e D/→ para mover para direita.",
+    "Pressione Espaço para pular.",
+    "Pressione E ou Enter próximo a um NPC para interagir com ele.",
+    "Suas escolhas durante os diálogos afetarão sua reputação no jogo.",
+    "Agora você está pronto para começar sua aventura! Boa sorte!"
+];
+
+const narrations = [
+    "Em nossa jornada, cada escolha que fazemos molda não apenas nossa história, mas também o mundo ao nosso redor.",
+    "Como uma IA, aprendi que a ética não está apenas nas grandes decisões, mas em cada pequena interação.",
+    "Observe como suas escolhas afetam sua reputação. Seja gentil ou hostil, cada ação tem uma consequência.",
+    "O verdadeiro poder não está na força, mas na sabedoria de nossas escolhas."
+];
+
+let currentNarration = 0;
+
+startButton.addEventListener('click', () => {
+    startScreen.style.display = 'none';
+    showTutorial();
+    startNarration();
+});
+
+function showTutorial() {
+    tutorialOverlay.style.display = 'block';
+    tutorialBox.style.display = 'block';
+    updateTutorial();
+}
+
+function updateTutorial() {
+    if (currentTutorialStep < tutorialSteps.length) {
+        tutorialText.textContent = tutorialSteps[currentTutorialStep];
+    } else {
+        tutorialOverlay.style.display = 'none';
+        tutorialBox.style.display = 'none';
+        startGame();
+    }
+}
+
+tutorialNext.addEventListener('click', () => {
+    currentTutorialStep++;
+    updateTutorial();
+});
+
+function startGame() {
+    gameStarted = true;
+    controlsHint.style.display = 'block';
+    createWorldElements();
+}
+
+function startNarration() {
+    narratorContainer.style.display = 'block';
+    updateNarration();
+    setInterval(updateNarration, 10000);
+}
+
+function updateNarration() {
+    narratorText.textContent = narrations[currentNarration];
+    currentNarration = (currentNarration + 1) % narrations.length;
+}
+
+
+function startJump() {
+    if (!isGrounded) return;
+
+    isJumping = true;
+    isGrounded = false;
+    jumpHeight = 100;
+
+    const jumpInterval = setInterval(() => {
+        if (jumpHeight < maxJumpHeight && isJumping) {
+            jumpHeight += jumpSpeed;
+            player.style.bottom = `${jumpHeight}px`;
+        } else {
+            isJumping = false;
+            fallDown();
+            clearInterval(jumpInterval);
+        }
+    }, 20);
+}
+
+function fallDown() {
+    const fallInterval = setInterval(() => {
+        if (jumpHeight > 100) {
+            jumpHeight -= fallSpeed;
+            player.style.bottom = `${Math.max(jumpHeight, 100)}px`;
+        } else {
+            jumpHeight = 100;
+            player.style.bottom = '100px';
+            isGrounded = true;
+            clearInterval(fallInterval);
+        }
+    }, 20);
+}
+
+document.addEventListener('keydown', (e) => {
+    if (isDialogActive) return;
+
+    if (e.key === 'a' || e.key === 'ArrowLeft') keys.left = true;
+    if (e.key === 'd' || e.key === 'ArrowRight') keys.right = true;
+    if (e.key === 'w' && isGrounded || e.key === 'ArrowUp' || e.key === ' ') {
+        startJump();
+    }
+    if (e.key === 'e' || e.key === 'Enter') checkInteraction();
+});
+
+let keys = {
+    left: false,
+    right: false,
+    top: false
+};
+
+
+document.addEventListener('keyup', (e) => {
+    if (e.key === 'a' || e.key === 'ArrowLeft') keys.left = false;
+    if (e.key === 'd' || e.key === 'ArrowRight') keys.right = false;
+});
+
+function gameLoop() {
+    if (!isDialogActive) {
+        if (keys.left) {
+            playerX = Math.max(50, playerX - playerSpeed);
+            player.classList.remove('flip');
+        }
+        if (keys.right) {
+            playerX = Math.min(2350, playerX + playerSpeed);
+            player.classList.add('flip');
         }
 
-        async function getNPCDialog(npcType) {
-            const dialogs = {
-                'Mercador': {
-                    text: "Olá, viajante! Precisa de alguma mercadoria?",
-                    choices: [
-                        { 
-                            text: "Sim, quero comprar algo", 
-                            effect: 1 
-                        },
-                        { 
-                            text: "Não, obrigado", 
-                            effect: -1 
-                        }
-                    ]
-                },
-                'Aldeão': {
-                    text: "Bem-vindo à nossa aldeia. Tem alguma notícia para compartilhar?",
-                    choices: [
-                        { 
-                            text: "Contar uma história interessante", 
-                            effect: 2 
-                        },
-                        { 
-                            text: "Ignorar o aldeão", 
-                            effect: -2 
-                        }
-                    ]
-                },
-                'Mago': {
-                    text: "Ah, um viajante se aproxima. Qual é o seu propósito aqui?",
-                    choices: [
-                        { 
-                            text: "Buscar conhecimento", 
-                            effect: 3 
-                        },
-                        { 
-                            text: "Desafiar o mago", 
-                            effect: -3 
-                        }
-                    ]
+        player.style.left = `${playerX}px`;
+
+        const viewportWidth = viewport.clientWidth;
+        const halfViewport = viewportWidth / 2;
+
+        if (playerX > halfViewport && playerX < 2400 - halfViewport) {
+            worldX = -1 * (playerX - halfViewport);
+            gameWorld.style.left = `${worldX}px`;
+            gameContainer.style.backgroundPosition = `${worldX * 0.5}px 0`;
+        }
+    }
+    requestAnimationFrame(gameLoop);
+}
+
+gameLoop();
+
+        async function checkInteraction() {
+            for (const npc of npcs) {
+                const npcElement = document.getElementById(npc.id);
+                const npcRect = npcElement.getBoundingClientRect();
+                const playerRect = player.getBoundingClientRect();
+                
+                if (Math.abs(npcRect.left - playerRect.left) < 100) {
+                    currentNPC = npc;
+                    const dialog = await getNPCDialog(npc.type);
+                    showDialog(dialog);
+                    return;
                 }
-            };
-
-            return dialogs[npcType] || {
-                text: "Olá, não tenho nada para dizer no momento.",
-                choices: [
-                    { 
-                        text: "Ok", 
-                        effect: 0 
-                    }
-                ]
-            };
+            }
         }
 
-        let currentTutorialStep = 0;
-        const tutorialSteps = [
-            "Bem-vindo ao nosso RPG Interativo! Vamos aprender os controles básicos.",
-            "Use as teclas A/← para mover para esquerda e D/→ para mover para direita.",
-            "Pressione Espaço para pular.",
-            "Pressione E ou Enter próximo a um NPC para interagir com ele.",
-            "Suas escolhas durante os diálogos afetarão sua reputação no jogo.",
-            "Agora você está pronto para começar sua aventura! Boa sorte!"
-        ];
-
-        const narrations = [
-            "Em nossa jornada, cada escolha que fazemos molda não apenas nossa história, mas também o mundo ao nosso redor.",
-            "Como uma IA, aprendi que a ética não está apenas nas grandes decisões, mas em cada pequena interação.",
-            "Observe como suas escolhas afetam sua reputação. Seja gentil ou hostil, cada ação tem uma consequência.",
-            "O verdadeiro poder não está na força, mas na sabedoria de nossas escolhas."
-        ];
-
-        let currentNarration = 0;
-
-        startButton.addEventListener('click', () => {
-            startScreen.style.display = 'none';
-            showTutorial();
-            startNarration();
-        });
-
-        function showTutorial() {
-            tutorialOverlay.style.display = 'block';
-            tutorialBox.style.display = 'block';
-            updateTutorial();
+        function showDialog(dialog) {
+            isDialogActive = true;
+            dialogBox.style.display = 'block';
+            dialogText.textContent = dialog.text;
+            
+            choiceContainer.innerHTML = '';
+            dialog.choices.forEach(choice => {
+                const button = document.createElement('button');
+                button.textContent = choice.text;
+                button.classList.add('choice-button');
+                button.onclick = () => handleChoice(choice);
+                choiceContainer.appendChild(button);
+            });
         }
 
-        function updateTutorial() {
-            if (currentTutorialStep < tutorialSteps.length) {
-                tutorialText.textContent = tutorialSteps</antArtifact>
+        function handleChoice(choice) {
+            reputation += choice.effect;
+            updateReputationBar();
+            
+            isDialogActive = false;
+            dialogBox.style.display = 'none';
+            currentNPC = null;
+        }
+
+        function updateReputationBar() {
+            const maxReputation = 10;
+            const percent = ((reputation + maxReputation) / (2 * maxReputation)) * 100;
+            reputationIndicator.style.width = `${percent}%`;
+        }
+
+    </script>
+</body>
+</html>
+
+
+
