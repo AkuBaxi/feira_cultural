@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aventura IA</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Tela de Carregamento -->
+    <div id="loading-screen">
+        <div class="loader"></div>
+        <p>Carregando...</p>
+    </div>
+
+    <!-- Menu Principal -->
+    <main id="start-screen" class="screen active">
+        <div class="box-menu">
+            <h1 id="start-title" class="game-title">TESTE IA</h1>
+            <button class="button-menu primary-button" data-action="start">
+                <span class="button-icon">▶</span>
+                Iniciar Jornada
+            </button>
+            <button class="button-menu secondary-button" data-action="load">
+                <span class="button-icon">📂</span>
+                Carregar Jogo
+            </button>
+            <button class="button-menu secondary-button" data-action="options">
+                <span class="button-icon">⚙️</span>
+                Opções
+            </button>
+            <button class="button-menu secondary-button" data-action="about">
+                <span class="button-icon">ℹ️</span>
+                Sobre
+            </button>
+        </div>
+    </main>
+
+    <!-- Menu de Opções -->
+    <div id="options-menu" class="modal">
+        <div class="modal-content">
+            <h2>Opções</h2>
+            <div class="options-container">
+                <div class="option-group">
+                    <label for="music-volume">Volume da Música</label>
+                    <input type="range" id="music-volume" min="0" max="100" value="50">
+                </div>
+                <div class="option-group">
+                    <label for="sfx-volume">Volume dos Efeitos</label>
+                    <input type="range" id="sfx-volume" min="0" max="100" value="50">
+                </div>
+                <div class="option-group">
+                    <label for="graphics-quality">Qualidade Gráfica</label>
+                    <select id="graphics-quality">
+                        <option value="low">Baixa</option>
+                        <option value="medium" selected>Média</option>
+                        <option value="high">Alta</option>
+                    </select>
+                </div>
+            </div>
+            <button class="close-modal">Fechar</button>
+        </div>
+    </div>
+
+    <!-- Seleção de Modo -->
+    <div id="mode-selection" class="screen">
+        <div class="mode-container">
+            <h1>Selecione o Modo de Jogo</h1>
+        
+            <div class="mode-option" data-mode="normal">
+                <div class="mode-icon">🎮</div>
+                <div class="mode-content">
+                    <div class="mode-title">Modo Normal</div>
+                    <div class="mode-description">Experiência completa com controles livres</div>
+                </div>
+            
+            </div>
+           
+            <div class="mode-option" data-mode="simple">
+                <div class="mode-icon">🎯</div>
+                <div class="mode-content">
+                    <div class="mode-title">Modo Simplificado</div>
+                    <div class="mode-description">Navegação por pontos com história focada</div>
+                </div>
+            </div>
+       
+        </div>
+    </div>
+
+   
+
+    <!-- Interface do Jogo -->
+<div id="game-interface" class="screen">
+    <!-- HUD -->
+    <div id="hud">
+        <!-- Barra de Vida -->
+        <div class="status-bar health-bar">
+            <div class="bar-label">HP</div>
+            <div class="bar-container">
+                <div class="bar-fill"></div>
+            </div>
+            <div class="bar-value">100/100</div>
+        </div>
+
+        <!-- Barra de Energia -->
+        <div class="status-bar energy-bar">
+            <div class="bar-label">EP</div>
+            <div class="bar-container">
+                <div class="bar-fill"></div>
+            </div>
+            <div class="bar-value">100/100</div>
+        </div>
+
+        <!-- Reputação -->
+        <div id="reputation-container">
+            <div class="reputation-label">Reputação</div>
+            <div id="reputation-bar">
+                <div id="reputation-indicator"></div>
+            </div>
+            <div class="reputation-value">Neutro</div>
+        </div>
+
+        <!-- Inventário Rápido -->
+        <div id="quick-inventory">
+            <div class="inventory-slot" data-slot="1"></div>
+            <div class="inventory-slot" data-slot="2"></div>
+            <div class="inventory-slot" data-slot="3"></div>
+        </div>
+    </div>
+
+    <!-- Área de Jogo -->
+    <div id="game-container">
+        <div id="viewport">
+            <div id="game-world">
+                <div id="player"></div>
+                <!-- NPCs e estruturas serão inseridos via JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Sistema de Diálogo -->
+    <div id="dialog-system">
+        <!-- Caixa de Diálogo -->
+        <div id="dialog-box">
+            <!-- Avatar do NPC -->
+            <div id="npc-avatar"></div>
+            
+            <!-- Conteúdo do Diálogo -->
+            <div class="dialog-content">
+                <div id="npc-name"></div>
+                <div id="dialog-text"></div>
+            </div>
+            
+            <!-- Escolhas -->
+            <div id="choice-container"></div>
+            
+            <!-- Indicador de Continuação -->
+            <div class="dialog-continue">▼</div>
+        </div>
+    </div>
+
+    <!-- Controles -->
+    <div id="controls-hint" class="tutorial-box">
+        <h3>Controles</h3>
+        <ul class="controls-list">
+            <li><span class="key">A</span>/<span class="key">←</span> - Mover para esquerda</li>
+            <li><span class="key">D</span>/<span class="key">→</span> - Mover para direita</li>
+            <li><span class="key">E</span>/<span class="key">Enter</span> - Interagir</li>
+            <li><span class="key">I</span> - Inventário</li>
+            <li><span class="key">M</span> - Mapa</li>
+            <li><span class="key">Esc</span> - Menu</li>
+        </ul>
+    </div>
+</div>
+
+     <!-- Sistema de Diálogo -->
+     <div id="dialog-system">
+        <!-- Caixa de Diálogo -->
+        <div id="dialog-box">
+            <!-- Avatar do NPC -->
+            <div id="npc-avatar"></div>
+            
+            <!-- Conteúdo do Diálogo -->
+            <div class="dialog-content">
+                <div id="npc-name"></div>
+                <div id="dialog-text"></div>
+            </div>
+            
+            <!-- Escolhas -->
+            <div id="choice-container"></div>
+            
+            <!-- Indicador de Continuação -->
+            <div class="dialog-continue">▼</div>
+        </div>
+    </div>
+
+    <!-- Controles -->
+    <div id="controls-hint" class="tutorial-box">
+        <h3>Controles</h3>
+        <ul class="controls-list">
+            <li><span class="key">A</span>/<span class="key">←</span> - Mover para esquerda</li>
+            <li><span class="key">D</span>/<span class="key">→</span> - Mover para direita</li>
+            <li><span class="key">E</span>/<span class="key">Enter</span> - Interagir</li>
+            <li><span class="key">I</span> - Inventário</li>
+            <li><span class="key">M</span> - Mapa</li>
+            <li><span class="key">Esc</span> - Menu</li>
+        </ul>
+        </div>
+    </div>
+
+    <!-- Sistema de Notificações -->
+    <div id="notification-system">
+        <div id="notification-container"></div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="config.js"></script>
+    <script src="gameState.js"></script>
+    <script src="npcManager.js"></script>
+    <script src="animations.js"></script>
+    <script src="main.js"></script>
+    <script src="screen-manager.js"></script>
+    <script>
+        
+    </script>
+</body>
+</html>
