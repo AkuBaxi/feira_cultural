@@ -1,90 +1,165 @@
-# Jogo de Aventura Interativo
+# Jogo Narrativo de Inteligência Artificial
+# X-IA
 
-Este projeto implementa um jogo de aventura simples em 2D, onde o jogador pode interagir com NPCs, explorar um mundo virtual e tomar decisões que impactam sua reputação e o andamento do jogo. O jogo inclui elementos como movimento do personagem, saltos, interação com NPCs, escolha de diálogos e a possibilidade de salvar o progresso.
+## 🤖 Contexto de Inteligência Artificial
 
-## Funcionalidades
+Este projeto é uma demonstração prática de conceitos de Inteligência Artificial (IA), focando especificamente em:
 
-- **Movimento do Jogador**: O jogador pode se mover para a esquerda e direita usando as teclas `A` e `D` ou as setas do teclado.
-- **Salto**: O jogador pode pular com a tecla `W`, `Seta para cima` ou `Espaço`.
-- **Interação com NPCs**: O jogador pode interagir com NPCs próximos ao pressionar `E` ou `Enter`. Cada NPC possui uma série de diálogos com escolhas que afetam a reputação do jogador.
-- **Reputação**: As escolhas feitas pelo jogador durante as interações com os NPCs alteram sua reputação, que é representada por uma barra de reputação visível na interface.
-- **Pausa e Salvamento**: O jogador pode pausar o jogo e salvar seu progresso. O jogo também suporta o carregamento de um estado salvo.
-- **Relatório Final**: Ao completar as interações com todos os NPCs, o jogador recebe um relatório final que exibe sua reputação, status (Herói, Vilão ou Neutro), e as conquistas obtidas.
+### 🧠 Aprendizado e Tomada de Decisões
 
-## Como Jogar
+O jogo simula um ambiente de aprendizado onde:
+- Cada interação do jogador representa um "exemplo de treinamento"
+- O sistema de reputação modela um mecanismo básico de aprendizado por reforço
+- As escolhas do jogador criam um "dataset" de comportamentos e consequências
 
-### Controles
+### 🔍 Simulação de Decisões Éticas
 
-- **Mover para a esquerda**: `A` ou `Seta para a esquerda`
-- **Mover para a direita**: `D` ou `Seta para a direita`
-- **Saltar**: `W`, `Seta para cima` ou `Espaço`
-- **Interagir com NPC**: `E` ou `Enter`
-- **Pausar o jogo**: `Esc`
-- **Salvar progresso**: A opção de salvar está disponível no menu de pausa.
+O sistema de reputação e status do jogador (Herói/Neutro/Vilão) demonstra como:
+- Algoritmos de IA podem aprender padrões éticos
+- Decisões podem ser avaliadas e classificadas
+- Consequências de escolhas podem ser modeladas computacionalmente
 
-### Reputação
+### 📊 Elementos de Aprendizado de Máquina Simulados
 
-Durante o jogo, suas escolhas de diálogo com os NPCs afetam sua **reputação**. O sistema de reputação segue três possíveis estados:
+- **Reputação como Função de Custo**: A pontuação de reputação atua como uma métrica de "sucesso" das decisões
+- **Classificação Automática**: Transformação de pontuações em categorias (Herói/Neutro/Vilão)
+- **Registro de Experiências**: Salvamento de escolhas e estados para análise posterior
 
-- **Herói**: Você tem uma reputação positiva.
-- **Vilão**: Você tem uma reputação negativa.
-- **Neutro**: Você não se destacou em nenhuma das direções.
+### 🌐 Narrativa Adaptativa
 
-### NPCs e Estruturas
+O jogo explora como sistemas de IA podem:
+- Criar narrativas dinâmicas
+- Responder a diferentes entradas do usuário
+- Gerar experiências únicas baseadas em interações anteriores
 
-O mundo do jogo é composto por **NPCs** com os quais o jogador pode interagir. Cada NPC oferece escolhas que impactam a reputação do jogador. As interações com NPCs incluem:
+## 🔬 Conceitos de IA Demonstrados
 
-- **Mercador**: Oferece a opção de comprar mercadorias.
-- **Aldeão**: Solicita ajuda para a vila.
-- **Mago**: Oferece o aprendizado de magia.
+1. **Aprendizado por Reforço**: 
+   - Cada escolha tem uma pontuação de impacto
+   - O sistema "aprende" ao registrar consequências das ações
 
-Além disso, existem **estruturas** no mundo, como casas, torres e tavernas, que podem ser exploradas, e cada estrutura visitada também afeta o progresso do jogo.
+2. **Tomada de Decisão Automatizada**:
+   - NPCs respondem com base em um conjunto de regras predefinidas
+   - Geração de diálogos e escolhas contextuais
 
-### Fim do Jogo
+3. **Persistência e Memória**:
+   - Sistema de saves simula como IAs podem "lembrar" e "aprender" de experiências passadas
 
-O jogo termina quando o jogador interage com todos os NPCs disponíveis. O relatório final é exibido com as estatísticas do jogo, incluindo:
+## 🎓 Objetivo Educacional
 
-- **Reputação Final**: O valor total da reputação do jogador.
-- **Status**: Herói, Vilão ou Neutro, dependendo da reputação.
-- **Interações com NPCs**: Um resumo de quais NPCs foram interagidos.
-- **Conquistas**: Conquistas obtidas pelo jogador durante a aventura, como interagir com todos os NPCs ou visitar todas as estruturas.
+Demonstrar de forma interativa e acessível:
+- Como sistemas de IA tomam decisões
+- Os fundamentos de aprendizado de máquina
+- A complexidade ética na tomada de decisões automatizadas
 
-## Arquitetura
+## ⚠️ Limitações Pedagógicas
 
-### Componentes do Jogo
+É importante compreender que este é um modelo **simplificado**:
+- Representa conceitos básicos de IA
+- Não reflete a complexidade de sistemas de IA avançados
+- Serve como uma introdução didática ao tema
 
-- **Elementos do DOM**: São os componentes visuais, como o jogador, NPCs, caixa de diálogo, barra de reputação, e o mundo do jogo.
-- **Estados do Jogo**: Variáveis que controlam o estado atual do jogo, como a posição do jogador, reputação, se o jogo está pausado, e o NPC atual.
-- **NPCs**: Personagens não jogáveis que possuem diálogos e interações com o jogador. Cada NPC tem um tipo (ex: Mercador, Aldeão, Mago) e pode afetar a reputação do jogador.
-- **Estruturas**: Elementos fixos no mundo do jogo, como casas e torres, que o jogador pode explorar.
-- **Diálogos**: O sistema de diálogo permite que o jogador escolha opções durante as interações com os NPCs, influenciando o desenrolar da história.
-- **Controle de Movimento**: O jogador pode se mover e pular no mundo utilizando as teclas correspondentes, com a física do salto e queda.
+## 🚀 Para Educadores e Estudantes
 
-### Game Loop
+Este projeto pode ser usado para:
+- Introduzir conceitos de IA
+- Discutir ética em sistemas automatizados
+- Demonstrar princípios básicos de aprendizado de máquina
 
-A lógica de jogo é atualizada em um **game loop** que é executado continuamente utilizando o método `requestAnimationFrame`. Este loop é responsável por:
+## 📖 Descrição do Projeto
 
-- Atualizar a posição do jogador com base nas entradas do teclado.
-- Mover o mundo para seguir o jogador.
-- Verificar colisões e interações com NPCs e estruturas.
+Este é um jogo narrativo interativo desenvolvido com HTML, CSS e JavaScript, oferecendo uma experiência de aventura onde as escolhas do jogador impactam diretamente a narrativa e a reputação.
 
-## Como Executar
+## 🎮 Funcionalidades Principais
 
-1. Clone o repositório ou baixe os arquivos do projeto.
-2. Abra o arquivo `index.html` em um navegador para iniciar o jogo.
+- **Sistema de Navegação**: Menu principal com opções de iniciar jornada, carregar jogo e configurações
+- **Modos de Jogo**: 
+  - Modo Normal: Jogabilidade completa com controles livres
+  - Modo Simplificado: Navegação direcionada com foco na história
+- **Sistema de Reputação**: Tracking das decisões do jogador
+- **Salvamento de Progresso**: Permite salvar e carregar jogos
+- **Acessibilidade**: Modo daltônico com diferentes esquemas de cores
 
-### Dependências
+## 🕹️ Controles
 
-Este projeto não possui dependências externas, mas requer um navegador moderno com suporte a JavaScript.
+- **Movimento**:
+  - `A` / `←`: Mover para esquerda
+  - `D` / `→`: Mover para direita
+  - `W` / `↑` / `Espaço`: Pular
+  - `E` / `Enter`: Interagir com NPCs
+  - `Esc`: Pausar o jogo
 
-## Contribuições
+## 📁 Estrutura do Projeto
 
-Sinta-se à vontade para contribuir para o projeto! Se você deseja adicionar novos recursos, corrigir bugs ou melhorar a documentação, crie um **pull request**.
+```
+projeto/
+│
+├── index.html         # Página inicial e menu principal
+├── fase1.html         # Primeira fase do jogo
+├── script.js          # Lógica de navegação e menu
+├── game1.js           # Mecânicas do jogo e sistema de interação
+└── save-manager.js    # Gerenciamento de saves
+```
 
-## Licença
+## 🔧 Tecnologias Utilizadas
 
-Este projeto está licenciado sob a [Licença MIT](LICENSE).
+- HTML5
+- JavaScript (Vanilla)
+- SessionStorage para persistência de dados
+- Sistema de gerenciamento de saves customizado
 
----
+## 💾 Sistema de Save
 
-Se você encontrar algum erro ou tiver sugestões de melhorias, sinta-se à vontade para abrir uma **issue** no repositório. Divirta-se jogando!
+- Salva o estado do jogo, incluindo:
+  - Reputação
+  - Status do jogador
+  - Fase atual
+  - Escolhas narrativas
+- Limite de 5 saves
+- Possibilidade de carregar e excluir saves
+
+## 🌈 Acessibilidade
+
+Suporta modos de cor para diferentes tipos de daltonismo:
+- Normal
+- Protanopia
+- Deuteranopia
+- Tritanopia
+
+## 📊 Sistema de Reputação
+
+Suas escolhas afetam sua reputação:
+- Reputação positiva: Torna-se um Herói
+- Reputação negativa: Torna-se um Vilão
+- Neutro: Equilíbrio entre escolhas
+
+## 🏆 Conquistas
+
+- Primeiro Contato: Interagir com o primeiro NPC
+- Diplomata: Interagir com todos os NPCs
+- Explorador: Visitar todas as estruturas
+
+## 🚀 Como Iniciar
+
+1. Clone o repositório
+2. Abra `index.html` em um navegador moderno
+3. Explore o jogo!
+
+## 🛠️ Requisitos
+
+- Navegador moderno com suporte a JavaScript
+- Resolução mínima: 1024x768
+
+## 📝 Notas de Desenvolvimento
+
+- Projeto em desenvolvimento
+- Fase 1 totalmente implementada
+- Próximas fases em construção
+
+## 🤝 Contribuição
+
+Contribuições são bem-vindas! Por favor, leia as diretrizes de contribuição antes de enviar pull requests.
+
+## 📄 Licença
+
+[Inserir informações de licença]
