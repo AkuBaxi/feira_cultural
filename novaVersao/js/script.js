@@ -142,20 +142,20 @@ function selectPhase(phaseNumber) {
     console.log(`Selecionando fase ${phaseNumber}`); // Debug
     switch(phaseNumber) {
         case 1:
-            window.location.href = './fase1.html';
+            window.location.href = './fases/game1.html';
             
             break;
         case 2:
-            window.location.href = './fase2.html'; 
+            window.location.href = './fases/game2.html'; 
             break;
         case 3:
-            window.location.href = './fase3.html'; 
+            window.location.href = './fases/game3.html'; 
             break;
         case 4:
-            window.location.href = './fase4.html'; 
+            window.location.href = './fases/game4.html'; 
             break;
         case 5:
-            window.location.href = './fase5.html'; 
+            window.location.href = './fases/game5.html'; 
             break;
             console.log(`Fase ${phaseNumber} selecionada - Indisponível`);
             break;

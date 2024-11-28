@@ -59,21 +59,21 @@ const npcs = [
         id: 'merchant',
         x: 300,
         type: 'Mercador',
-        sprite: 'img/bonecoNPCTeste.png',
+        sprite: '../img/bonecoNPCTeste.png',
         interacted: false
     },
     {
         id: 'quest_giver',
         x: 800,
         type: 'Aldeão',
-        sprite: 'img/bonecoNPCTeste.png',
+        sprite: '../img/bonecoNPCTeste.png',
         interacted: false
     },
     {
         id: 'wizard',
         x: 1500,
         type: 'Mago',
-        sprite: 'img/bonecoNPCTeste.png',
+        sprite: '../img/bonecoNPCTeste.png',
         interacted: false
     }
 ];
