@@ -9,12 +9,81 @@
     <div class="container">
         <div id="mainMenu" class="menu">
             <h1>TESTE IA</h1>
-            <a href="game.html"><button>▶ Iniciar Jornada</button></a>
-            <a href="sobre.html"><button>ℹ️ Sobre</button></a>
+            <button onclick="handleStartJourney()">▶ Iniciar Jornada</button>
+            <button onclick="openLoadGame()">📁 Carregar Jogo</button>
+            <button onclick="openSettings()">⚙️ Opções</button>
+            <button onclick="openAbout()">ℹ️ Sobre</button>
+        </div>
+
+        <div id="gameModeMenu" class="menu hidden">
+            <h2>Selecione o Modo de Jogo</h2>
+            <div class="game-mode" onclick="selectNormalMode()">
+                <h3>🎮 Modo Normal</h3>
+                <p>Experiência completa com controles livres</p>
+            </div>
+            <div class="game-mode">
+                <h3>🎯 Modo Simplificado</h3>
+                <p>Navegação por pontos com história focada</p>
+            </div>
+            <button onclick="backToMainMenu()">Voltar</button>
+        </div>
+
+        <div id="loadGameMenu" class="menu hidden">
+            <h2>Carregar Jogo</h2>
+            <div id="saves-container">
+                <!-- Os saves serão renderizados aqui -->
+            </div>
+            <div class="menu-buttons">
+                <button onclick="backToMainMenu()">Voltar</button>
+            </div>
+        </div>
+
+        <div id="phasesMenu" class="menu hidden">
+            <h2>Selecione a Fase</h2>
+            <div class="phase" data-phase="1">
+                <span class="phase-icon">🏰</span>
+                <h3>Fase 1: O Início da Jornada</h3>
+            </div>
+            <div class="phase" data-phase="2">
+                <span class="phase-icon">🌑</span>
+                <h3>Fase 2: Vale das Sombras</h3>
+            </div>
+            <div class="phase" data-phase="3">
+                <span class="phase-icon">❄️</span>
+                <h3>Fase 3: Montanha Gelada</h3>
+            </div>
+            <div class="phase" data-phase="4">
+                <span class="phase-icon">🌳</span>
+                <h3>Fase 4: Floresta Mística</h3>
+            </div>
+            <div class="phase" data-phase="5">
+                <span class="phase-icon">🏯</span>
+                <h3>Fase 5: Castelo Final</h3>
+            </div>
+            <button onclick="backToGameMode()">Voltar</button>
+        </div>
+
+        <div id="settingsMenu" class="menu hidden">
+            <h2>Configurações</h2>
+            <div class="settings-option">
+                <label>Volume Geral</label>
+                <input type="range" min="0" max="100" value="100" onchange="updateVolume(this.value)">
+                <span id="volumeValue">100</span>
+            </div>
+            <div class="settings-option">
+                <label>Modo Daltônico</label>
+                <select onchange="updateColorMode(this.value)">
+                    <option value="normal">Normal</option>
+                    <option value="protanopia">Protanopia</option>
+                    <option value="deuteranopia">Deuteranopia</option>
+                    <option value="tritanopia">Tritanopia</option>
+                </select>
+            </div>
+            <button onclick="backToMainMenu()">Voltar</button>
         </div>
     </div>
-<!-- 
+
     <script src="save-manager.js"></script>
-    <script src="script.js"></script> -->
+    <script src="script.js"></script>
 </body>
 </html>
