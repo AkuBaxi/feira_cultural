@@ -107,6 +107,15 @@ body {
     background-size: auto 100%;
 }
 
+#game-container5{
+    width: 2400px;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+    background: url('../img/faseCastelo.jpg') repeat-x;  
+    background-size: auto 100%;
+}
+
 
 
 
