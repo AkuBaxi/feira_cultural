@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>TESTE IA</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
     <div class="container">
@@ -12,7 +12,7 @@
             <button onclick="handleStartJourney()">▶ Iniciar Jornada</button>
             <button onclick="openLoadGame()">📁 Carregar Jogo</button>
             <button onclick="openSettings()">⚙️ Opções</button>
-            <button onclick="openAbout()">ℹ️ Sobre</button>
+            <a href="sobre.html"><button onclick="openAbout()">ℹ️ Sobre</button></a>
         </div>
 
         <div id="gameModeMenu" class="menu hidden">
@@ -81,9 +81,10 @@
             </div>
             <button onclick="backToMainMenu()">Voltar</button>
         </div>
+        
     </div>
 
-    <script src="save-manager.js"></script>
-    <script src="script.js"></script>
+    <script src="js/save-manager.js"></script>
+    <script src="js/script.js"></script>
 </body>
 </html>
