@@ -1,0 +1,266 @@
+/* Variáveis CSS */
+:root {
+    --primary-color: #4e1b0c;
+    --secondary-color: #4CAF50;
+    --text-color: #ffffff;
+    --background-color: #000000;
+    --transition-speed: 0.3s;
+    --animation-timing: ease-in-out;
+}
+
+/* Reset e Estilos Base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    font-family: 'Arial', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+/* Tela de Loading */
+#loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--background-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.loader {
+    width: 50px;
+    height: 50px;
+    border: 5px solid var(--text-color);
+    border-top-color: var(--secondary-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+/* Tela Inicial */
+.screen {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    display: none;
+}
+
+.screen.active {
+    display: flex;
+}
+
+#start-screen {
+    /* background-image: url("../img_fundo/faseBruxa.jpg"); */
+    background-color:var(--secondary-color);
+    background-size: cover;
+    background-position: center;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 70px;
+}
+
+.box-menu {
+    background-color: var(--primary-color);
+    padding: 40px;
+    border-radius: 15px;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+}
+
+.game-title {
+    font-size: 48px;
+    text-align: center;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+/* Botões */
+.button-menu {
+    padding: 15px 30px;
+    font-size: 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: transform var(--transition-speed) var(--animation-timing);
+}
+
+.button-menu:hover {
+    transform: scale(1.05);
+}
+
+/* Tela de Seleção de Modo */
+#mode-selection {
+    background-image: url("../img_fundo/faseBruxa.jpg");
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.mode-container {
+    background-color: var(--primary-color);
+    padding: 40px;
+    border-radius: 15px;
+    width: 600px;
+    max-width: 90%;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+}
+
+/* .mode-content{
+    justify-content: ce;
+    margin-left: 0px;
+    padding-left: 80px;
+} */
+
+.mode-option {
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 2px solid transparent;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    display: flex; /* Mantém o conteúdo dentro do .mode-option alinhado na horizontal */
+    align-items: center;
+    gap: 20px;
+    transition: all var(--transition-speed) var(--animation-timing);
+}
+
+.mode-option:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-color: var(--secondary-color);
+    transform: translateX(10px);
+}
+
+.mode-icon {
+    font-size: 48px;
+    width: 80px;
+    height: 80px;
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mode-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--secondary-color);
+    margin-bottom: 8px;
+}
+.mode-description {
+    color: var(--text-color);
+    font-size: 16px;
+    line-height: 1.4;
+    opacity: 0.8;
+}
+
+/* Modal de Opções */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal.active {
+    display: flex;
+}
+
+.modal-content {
+    background-color: var(--primary-color);
+    padding: 30px;
+    border-radius: 15px;
+    width: 500px;
+    max-width: 90%;
+}
+
+/* Controles de Range */
+input[type="range"] {
+    width: 100%;
+    height: 10px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+    outline: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    background-color: var(--secondary-color);
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+/* Animações */
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .box-menu {
+        width: 90%;
+        padding: 20px;
+    }
+
+    .mode-container {
+        padding: 20px;
+    }
+
+    .mode-option {
+        flex-direction: column;
+        text-align: center;
+        padding: 15px;
+    }
+
+    .mode-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 32px;
+    }
+
+    .mode-title {
+        font-size: 20px;
+    }
+
+    .mode-description {
+        font-size: 14px;
+    }
+}
+
+
+a{
+    text-decoration: none;
+    display: flex;
+    width: 100%;
+}
