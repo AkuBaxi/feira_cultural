@@ -19,6 +19,30 @@ O sistema de reputação e status do jogador (Herói/Neutro/Vilão) demonstra co
 - Decisões podem ser avaliadas e classificadas
 - Consequências de escolhas podem ser modeladas computacionalmente
 
+## 🌐 Projeto X-AI: Inteligência Artificial para Avaliação de Reputação
+
+### 🧬 Visão Geral do X-AI
+
+O projeto X-AI é uma iniciativa de inteligência artificial complementar ao nosso jogo, que visa medir e avaliar reputações utilizando técnicas avançadas de aprendizado de máquina.
+
+### 🔬 Características Principais
+
+- **Inteligência Artificial Avançada**: Utiliza deep learning e Processamento de Linguagem Natural (PLN)
+- **Avaliação em Tempo Real**: Processamento de dados de diversas fontes
+- **Aprendizado Contínuo**: Sistema que se adapta constantemente
+
+### 🧩 Metodologia
+
+- **Treinamento de Dados**: Análise de textos, falas, postagens e documentos
+- **Redes Neurais Profundas**: Detecção de nuances e padrões complexos
+- **Processamento de Linguagem Natural**: Interpretação contextual avançada
+
+### ⚖️ Considerações Éticas
+
+- **Transparência**: Desenvolvimento focado na imparcialidade
+- **Responsabilidade**: Ferramenta de análise, não de censura
+- **Auditoria Externa**: Verificação constante da precisão das avaliações
+
 ### 📊 Elementos de Aprendizado de Máquina Simulados
 
 - **Reputação como Função de Custo**: A pontuação de reputação atua como uma métrica de "sucesso" das decisões
@@ -137,7 +161,6 @@ Suas escolhas afetam sua reputação:
 
 - Primeiro Contato: Interagir com o primeiro NPC
 - Diplomata: Interagir com todos os NPCs
-- Explorador: Visitar todas as estruturas
 
 ## 🚀 Como Iniciar
 
@@ -153,8 +176,10 @@ Suas escolhas afetam sua reputação:
 ## 📝 Notas de Desenvolvimento
 
 - Projeto em desenvolvimento
-- Fase 1 totalmente implementada
-- Próximas fases em construção
+- Fases totalmente implementadas
+- Sistema de Save e Conquistas 
+- Sistema de Reputação e Acessibilidade
+- Sistema de Falas em Desenvolvimento
 
 ## 🤝 Contribuição
 
@@ -162,4 +187,24 @@ Contribuições são bem-vindas! Por favor, leia as diretrizes de contribuição
 
 ## 📄 Licença
 
-[Inserir informações de licença]
+MIT License
+
+Direitos Autorais (c) 2024 Equipe VT³
+
+É concedida permissão, gratuitamente, a qualquer pessoa que obtenha uma cópia
+deste software e dos arquivos de documentação associados (o "Software"), para 
+lidar com o Software sem restrição, incluindo, sem limitação, os direitos
+de usar, copiar, modificar, mesclar, publicar, distribuir, sublicenciar e/ou 
+vender cópias do Software, e permitir que as pessoas a quem o Software é
+fornecido o façam, mediante as seguintes condições:
+
+O aviso de direitos autorais acima e este aviso de permissão devem ser incluídos 
+em todas as cópias ou partes substanciais do Software.
+
+O SOFTWARE É FORNECIDO "NO ESTADO EM QUE SE ENCONTRA", SEM QUALQUER TIPO DE 
+GARANTIA, EXPRESSA OU IMPLÍCITA, INCLUINDO, MAS NÃO SE LIMITANDO A, GARANTIAS 
+DE COMERCIALIZAÇÃO, ADEQUAÇÃO A UMA FINALIDADE ESPECÍFICA E NÃO VIOLAÇÃO. EM 
+NENHUMA CIRCUNSTÂNCIA OS AUTORES OU DETENTORES DOS DIREITOS AUTORAIS SERÃO 
+RESPONSÁVEIS POR QUALQUER RECLAMAÇÃO, DANOS OU OUTRAS RESPONSABILIDADES, SEJA 
+EM UMA AÇÃO DE CONTRATO, DELITO OU DE OUTRA FORMA, DECORRENTE DE, OU EM 
+CONEXÃO COM O SOFTWARE OU O USO OU OUTRAS NEGOCIAÇÕES NO SOFTWARE.

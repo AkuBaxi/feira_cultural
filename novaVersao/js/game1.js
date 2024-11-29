@@ -20,6 +20,8 @@ window.onload = () => {
     }, 5000); // Espera o tempo do fade antes de começar o jogo
 };
 
+// Laura velha
+
 
 // Lista de dicas para o jogador
 const tips = [

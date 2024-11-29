@@ -1,8 +1,8 @@
-# Jogo de Aventura Interativo
+# Jogo de Aventura Interativo com Projeto X-AI
 
-Este projeto implementa um jogo de aventura simples em 2D, onde o jogador pode interagir com NPCs, explorar um mundo virtual e tomar decisões que impactam sua reputação e o andamento do jogo. O jogo inclui elementos como movimento do personagem, saltos, interação com NPCs, escolha de diálogos e a possibilidade de salvar o progresso.
+Este projeto combina um jogo de aventura simples em 2D com o projeto inovador de inteligência artificial "X-AI", que utiliza aprendizado de máquina para avaliar reputações políticas e comportamentais.
 
-## Funcionalidades
+## Funcionalidades do Jogo
 
 - **Movimento do Jogador**: O jogador pode se mover para a esquerda e direita usando as teclas `A` e `D` ou as setas do teclado.
 - **Salto**: O jogador pode pular com a tecla `W`, `Seta para cima` ou `Espaço`.
@@ -10,6 +10,30 @@ Este projeto implementa um jogo de aventura simples em 2D, onde o jogador pode i
 - **Reputação**: As escolhas feitas pelo jogador durante as interações com os NPCs alteram sua reputação, que é representada por uma barra de reputação visível na interface.
 - **Pausa e Salvamento**: O jogador pode pausar o jogo e salvar seu progresso. O jogo também suporta o carregamento de um estado salvo.
 - **Relatório Final**: Ao completar as interações com todos os NPCs, o jogador recebe um relatório final que exibe sua reputação, status (Herói, Vilão ou Neutro), e as conquistas obtidas.
+
+## Projeto X-AI: Inteligência Artificial para Avaliação de Reputação
+
+### Visão Geral
+
+O projeto X-AI é uma iniciativa de inteligência artificial que visa medir e avaliar reputações políticas e comportamentais utilizando técnicas avançadas de aprendizado de máquina.
+
+### Características Principais
+
+- **Inteligência Artificial Avançada**: Utiliza deep learning e Processamento de Linguagem Natural (PLN) para análise de comportamentos e discursos.
+- **Avaliação em Tempo Real**: Capaz de processar e avaliar dados de diversas fontes como redes sociais, notícias e documentos.
+- **Aprendizado Contínuo**: Sistema que se adapta constantemente, refinando suas avaliações com base em novos dados e feedbacks.
+
+### Metodologia
+
+- **Treinamento de Dados**: Utiliza uma vasta quantidade de dados para treinar o modelo, incluindo textos, falas, postagens e documentos.
+- **Redes Neurais Profundas**: Emprega algoritmos de deep learning para detectar nuances e padrões complexos.
+- **Processamento de Linguagem Natural**: Interpreta semântica, sintaxe e contextos além de palavras isoladas.
+
+### Considerações Éticas
+
+- **Transparência**: Desenvolvimento com foco na imparcialidade e diversidade de contextos.
+- **Responsabilidade**: Projetado para ser uma ferramenta de análise, não de censura.
+- **Auditoria Externa**: Sistema de verificação para garantir a precisão e ética das avaliações.
 
 ## Como Jogar
 
@@ -73,17 +97,18 @@ A lógica de jogo é atualizada em um **game loop** que é executado continuamen
 1. Clone o repositório ou baixe os arquivos do projeto.
 2. Abra o arquivo `index.html` em um navegador para iniciar o jogo.
 
+## Contribuições
+
+Sinta-se à vontade para contribuir para o projeto! Seja para melhorar o jogo, aprimorar a implementação do X-AI ou adicionar novos recursos, crie um **pull request**.
+
 ### Dependências
 
 Este projeto não possui dependências externas, mas requer um navegador moderno com suporte a JavaScript.
 
-## Contribuições
-
-Sinta-se à vontade para contribuir para o projeto! Se você deseja adicionar novos recursos, corrigir bugs ou melhorar a documentação, crie um **pull request**.
 
 ## Licença
 
-Este projeto está licenciado sob a [Licença MIT](LICENSE).
+Este projeto está licenciado sob a [Licença MIT]()
 
 ---
 
