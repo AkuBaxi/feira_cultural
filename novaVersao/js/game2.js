@@ -79,7 +79,7 @@ const fallSpeed = 15;
 const npcs = [
     {
         id: 'Old lady of flowers',
-        x: 1500,
+        x: 800,
         type: 'Laura da Silva das Flores Francisco',
         sprite: '../img/velhaFloresV2.png',
         interacted: false
