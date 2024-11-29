@@ -81,7 +81,7 @@ const npcs = [
         id: 'Old lady of flowers',
         x: 1500,
         type: 'Laura da Silva das Flores Francisco',
-        sprite: '../img/velhaFlor.png',
+        sprite: '../img/velhaFloresV2.png',
         interacted: false
     }
 ];
