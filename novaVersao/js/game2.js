@@ -1,3 +1,26 @@
+// Função para a transição de fade-out (tela preta desaparecendo)
+function fadeOut() {
+    const fadeElement = document.getElementById('screen-fade');
+    fadeElement.style.opacity = '0'; // Inicia o fade-out
+    setTimeout(() => {
+        fadeElement.style.display = 'none'; // Remove o fade após a transição
+    }, 5000); // O tempo do fade-out é de 2 segundos
+}
+
+// Função para inicializar o jogo e fazer o fade-in
+window.onload = () => {
+    // Inicia a tela preta
+    fadeOut();
+
+    // Agora inicia o conteúdo do jogo após o fade
+    setTimeout(() => {
+        // Aqui você pode iniciar o seu loop de jogo, o mundo, o jogador, etc.
+        createWorldElements(); // Exemplo para adicionar os NPCs e estruturas
+        gameLoopId = requestAnimationFrame(gameLoop); // Inicia o loop do jogo
+    }, 5000); // Espera o tempo do fade antes de começar o jogo
+};
+
+
 // Elementos do DOM
 const player = document.getElementById('player');
 const dialogBox = document.getElementById('dialog-box');

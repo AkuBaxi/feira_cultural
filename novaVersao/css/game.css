@@ -64,20 +64,12 @@ body {
 }
 
 /* Área do Jogo */
-#game-container {
-    width: 2400px;
-    height: 100vh;
-    position: relative;
-    overflow: hidden;
-    background: url('../img/fundo.jpg') repeat-x;  
-    background-size: auto 100%;
-}
 #game-container1 {
     width: 2400px;
     height: 100vh;
     position: relative;
     overflow: hidden;
-    background: url('../img/fundo.jpg') repeat-x;  
+    background: url('../img/faseBruxa.jpg') repeat-x;  
     background-size: auto 100%;
 }
 #game-container2 {
@@ -85,7 +77,7 @@ body {
     height: 100vh;
     position: relative;
     overflow: hidden;
-    background: url('../img/faseBruxa.jpg ') repeat-x;  
+    background: url('../img/faseFlorida.jpg ') repeat-x;  
     background-size: auto 100%;
 }
 
@@ -94,7 +86,7 @@ body {
     height: 100vh;
     position: relative;
     overflow: hidden;
-    background: url('../img/faseFlorida.jpg') repeat-x;  
+    background: url('../img/') repeat-x;  
     background-size: auto 100%;
 }
 
@@ -112,7 +104,7 @@ body {
     height: 100vh;
     position: relative;
     overflow: hidden;
-    background: url('../img/faseCastelo.jpg') repeat-x;  
+    background: url('../img/') repeat-x;  
     background-size: auto 100%;
 }
 
@@ -147,7 +139,7 @@ body {
 #player {
     width: 50px;
     height: 50px;
-    background: url('../img/bonecoTeste02.png') no-repeat center center;
+    background: url('../img/evaLado.png') no-repeat center center;
     background-size: contain;
     position: absolute;
     bottom: 100px;
