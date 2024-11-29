@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>TESTE IA - Jogo</title>
+    <link rel="stylesheet" href="../css/game.css">
+</head>
+<body>
+    <!-- Controles -->
+
+    
+    <div id="controls-hint">
+        Controles:<br>
+        A/← - Mover para esquerda<br>
+        D/→ - Mover para direita<br>
+        E/Enter - Interagir<br>
+        Esc - Pausar
+    </div>
+
+    <!-- Barra de Reputação -->
+    <div id="reputation-container">
+        <div>Reputação</div>
+        <div id="reputation-bar">
+            <div id="reputation-indicator"></div>
+        </div>
+    </div>
+
+    <!-- Área do Jogo -->
+    <div id="viewport">
+        <div id="game-container2">
+            <div id="game-world">
+                <div id="ground"></div>
+                <div id="player"></div>
+            </div>
+        </div>
+        <div id="dialog-box">
+            <p id="dialog-text"></p>
+            <div id="choice-container"></div>
+        </div>
+    </div>
+
+    <!-- Menu de Pausa -->
+    <div id="pause-menu">
+        <h1>Jogo Pausado</h1>
+        <div class="menu-buttons">
+            <button onclick="resumeGame()">Continuar</button>
+            <button onclick="saveCurrentGameState()">Salvar Jogo</button>
+            <button onclick="showOptions()">Opções</button>
+            <button onclick="backToMenu()">Menu Principal</button>
+        </div>
+    </div>
+
+    <!-- Relatório Final -->
+    <div id="end-report" style="display: none;">
+        <div id="choices-report" class="report-content">
+            <h2>Relatório Final</h2>
+            <div class="status-section"></div>
+            <div class="interactions-section"></div>
+            <div class="achievements-section"></div>
+        </div>
+        <div class="report-buttons">
+            <button onclick="restartGame()">Jogar Novamente</button>
+            <button onclick="backToMenu()">Menu Principal</button>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../js/save-manager.js"></script>
+    <script src="../js/game2.js"></script>
+</body>
+</html>
