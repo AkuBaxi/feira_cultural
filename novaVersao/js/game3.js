@@ -63,7 +63,7 @@ const npcs = [
         interacted: false
     },
     {
-        id: 'quest_giver',
+        id: 'Villager',
         x: 800,
         type: 'Aldeão',
         sprite: '../img/bonecoNPCTeste.png',
@@ -73,7 +73,7 @@ const npcs = [
         id: 'wizard',
         x: 1500,
         type: 'Mago',
-        sprite: '../img/bonecoNPCTeste.png',
+        sprite: '../img/bonecoNPCTeste2.png',
         interacted: false
     }
 ];
@@ -352,7 +352,7 @@ function showOptions() {
 }
 
 function backToMenu() {
-    window.location.href = '../index.htmlindex';
+    window.location.href = '../index.html';
 }
 
 // Sistema de Reputação e Status

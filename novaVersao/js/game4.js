@@ -64,21 +64,20 @@ const npcs = [
         interacted: false
     },
     {
-        id: 'quest_giver',
+        id: 'Villager',
         x: 800,
         type: 'Aldeão',
         sprite: '../img/bonecoNPCTeste.png',
         interacted: false
     },
     {
-        id: 'wizard',
+        id: 'wolf',
         x: 1500,
-        type: 'Mago',
-        sprite: '../img/bonecoNPCTeste.png',
+        type: 'Lobo',
+        sprite: '../img/lobo.png',
         interacted: false
     }
 ];
-
 // Estruturas do mundo
 const structures = [
     { x: 500, width: 100, height: 150, color: 'rgba(139, 69, 19, 0.7)', type: 'house', visited: false },

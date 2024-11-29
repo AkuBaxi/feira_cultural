@@ -107,7 +107,7 @@
         #narrator-avatar {
             width: 50px;
             height: 50px;
-            background: url('img/bonecoTeste.png') no-repeat center center;
+            background: url('img/boneco_Teste.png') no-repeat center center;
             background-size: contain;
             margin-bottom: 10px;
         }
@@ -122,7 +122,7 @@
             height: 100vh;
             position: relative;
             overflow: hidden;
-            background: url('img/fundo.jpg') repeat-x;  
+            background: url('img/faseLobo') repeat-x;  
             background-size: auto 100%;
         }
 
@@ -144,7 +144,7 @@
         #player {
             width: 50px;
             height: 50px;
-            background: url('img/bonecoTeste02.png') no-repeat center center;
+            background: url('img/boneco_Teste02.png') no-repeat center center;
             background-size: contain;
             position: absolute;
             bottom: 100px;
@@ -303,7 +303,8 @@
     </div>
 
     <script>
-        const player = document.getElementById('player');
+       
+const player = document.getElementById('player');
 const dialogBox = document.getElementById('dialog-box');
 const dialogText = document.getElementById('dialog-text');
 const choiceContainer = document.getElementById('choice-container');
@@ -342,19 +343,19 @@ const npcs = [
         id: 'merchant',
         x: 300,
         type: 'Mercador',
-        sprite: 'img/bonecoNPCTeste.png'
+        sprite: 'img/boneco_Teste.png'
     },
     {
         id: 'quest_giver',
         x: 800,
         type: 'Aldeão',
-        sprite: 'img/bonecoNPCTeste2.png'
+        sprite: 'img/boneco_Teste2.png'
     },
     {
         id: 'wizard',
         x: 1500,
         type: 'Mago',
-        sprite: 'img/bonecoNPCTeste.png'
+        sprite: 'img/boneco_Teste.png'
     }
 ];
 
@@ -436,6 +437,9 @@ function createWorldElements() {
         gameWorld.appendChild(structureElement);
     });
 }
+
+
+
 
 startButton.addEventListener('click', () => {
     startScreen.style.display = 'none';

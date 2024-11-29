@@ -59,21 +59,21 @@ const npcs = [
         id: 'merchant',
         x: 300,
         type: 'Mercador',
-        sprite: '../img/bonecoNPCTeste.png',
+        sprite: '..img/bonecoNPCTeste.png',
         interacted: false
     },
     {
-        id: 'quest_giver',
+        id: 'Villager',
         x: 800,
         type: 'Aldeão',
-        sprite: '../img/bonecoNPCTeste.png',
+        sprite: '..img/bonecoNPCTeste.png',
         interacted: false
     },
     {
-        id: 'wizard',
+        id: 'Old lady of flowers',
         x: 1500,
-        type: 'Mago',
-        sprite: '../img/bruxa.png',
+        type: 'Velha das floreso',
+        sprite: '../img/velhaFlor.png',
         interacted: false
     }
 ];

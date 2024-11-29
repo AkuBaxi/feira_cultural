@@ -56,27 +56,28 @@ const fallSpeed = 15;
 // NPCs do jogo
 const npcs = [
     {
-        id: 'merchant',
+        id: 'Guard',
         x: 300,
-        type: 'Mercador',
-        sprite: '../img/bonecoNPCTeste.png',
+        type: 'Guarda',
+        sprite: '../img/guarda.png',
         interacted: false
     },
     {
-        id: 'quest_giver',
+        id: 'Villager',
         x: 800,
         type: 'Aldeão',
         sprite: '../img/bonecoNPCTeste.png',
         interacted: false
     },
     {
-        id: 'wizard',
+        id: 'Witch',
         x: 1500,
-        type: 'Mago',
-        sprite: '../img/bonecoNPCTeste.png',
+        type: 'Bruxa',
+        sprite: '../img/bruxa.png',
         interacted: false
     }
 ];
+ 
 
 // Estruturas do mundo
 const structures = [
