@@ -34,6 +34,42 @@ function backToMainMenu() {
     }
 }
 
+// clickar no botam sozinho
+function oi() {
+    window.onload = function() {
+        // Escolha o botão desejado pelo ID
+        const botaoDesejado = document.getElementById('te');
+        botaoDesejado.click(); // Simula o clique no botão 2
+    
+        const botaoDesejado1 = document.getElementById('ta');
+        botaoDesejado1.click(); // Simula o clique no botão 2
+      };
+    
+}
+
+
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Verifica se há uma query string no URL
+    const params = new URLSearchParams(window.location.search);
+    const menuId = params.get('menu');
+
+    if (menuId) {
+        // Oculta todos os menus
+        const menus = document.querySelectorAll('.menu');
+        menus.forEach(menu => menu.classList.add('hidden'));
+
+        // Exibe o menu correspondente
+        const targetMenu = document.getElementById(menuId);
+        if (targetMenu) {
+            targetMenu.classList.remove('hidden');
+        }
+    }
+});
+
+
+
 // Sistema de carregamento de jogos
 function openLoadGame() {
     switchMenu('mainMenu', 'loadGameMenu');
