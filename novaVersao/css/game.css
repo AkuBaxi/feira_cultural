@@ -69,7 +69,7 @@ body {
     height: 100vh;
     position: relative;
     overflow: hidden;
-    background: url('../img/faseBruxa.jpg') repeat-x;  
+    background: url('../img/fundo/faseBruxa.jpg') repeat-x;  
     background-size: auto 100%;
 }
 #game-container2 {
@@ -77,7 +77,7 @@ body {
     height: 100vh;
     position: relative;
     overflow: hidden;
-    background: url('../img/faseFlorida.jpg ') no-repeat, url("../img/faseFlorida2.jpg");  
+    background: url('../img/fundo/faseFlorida.jpg ') no-repeat, url("../img/fundo/faseFlorida2.jpg");  
     background-size: auto 100%;
 }
 
@@ -86,7 +86,7 @@ body {
     height: 100vh;
     position: relative;
     overflow: hidden;
-    background: url('../img/livro.jpg') no-repeat, url('../img/livro2.jpg');  
+    background: url('../img/fundo/faseLivro.jpg') no-repeat, url('../img/fundo/faseLivro2.jpg');  
     background-size: auto 100%;
 }
 
@@ -95,7 +95,7 @@ body {
     height: 100vh;
     position: relative;
     overflow: hidden;
-    background: url('../img/faseLobo.jpg') no-repeat, url('../img/faseLobo2.jpg');  
+    background: url('../img/fundo/faseLobo.jpg') no-repeat, url('../img/fundo/faseLobo2.jpg');  
     background-size: auto 100%;
 }
 
@@ -104,7 +104,7 @@ body {
     height: 100vh;
     position: relative;
     overflow: hidden;
-    background: url('../img/ferreiro.jpg') no-repeat, url('../img/ferreiro2.jpg');  
+    background: url('../img/fundo/faseFerreiro.jpg') no-repeat, url('../img/fundo/faseFerreiro2.jpg');  
     background-size: auto 100%;
 }
 
@@ -139,7 +139,7 @@ body {
 #player {
     width: 80px;
     height: 80px;
-    background: url('../img/evaLado.png') no-repeat center center;
+    background: url('../img/pps/evaLado.png') no-repeat center center;
     background-size: contain;
     position: absolute;
     left: 100px;

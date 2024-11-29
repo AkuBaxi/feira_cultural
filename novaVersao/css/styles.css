@@ -10,7 +10,7 @@ body {
 }
 
 .container {
-    background-image: url('../img/testeDeFundo.gif');
+    background-image: url('../img/fundoPrincipal.gif');
     background-size: cover;
     min-height: 100vh;
 }

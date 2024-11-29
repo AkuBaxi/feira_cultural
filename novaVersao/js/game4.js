@@ -81,14 +81,14 @@ const npcs = [
         id: 'merchant',
         x: 300,
         type: 'Mercador',
-        sprite: '../img/bonecoNPCTeste.png',
+        sprite: '../img/pps/bonecoNPC.png',
         interacted: false
     },
     {
         id: 'Villager',
         x: 800,
         type: 'Aldeão',
-        sprite: '../img/bonecoNPCTeste.png',
+        sprite: '../img/pps/bonecoNPC.png',
         interacted: false
     },
     {

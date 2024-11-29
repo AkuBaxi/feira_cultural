@@ -82,21 +82,21 @@ const npcs = [
         id: 'Guard',
         x: 300,
         type: 'Guarda',
-        sprite: '../img/guarda.png',
+        sprite: '../img/pps/guarda.png',
         interacted: false
     },
     {
         id: 'Villager',
         x: 800,
         type: 'Aldeão',
-        sprite: '../img/bonecoNPCTeste.png',
+        sprite: '../img/pps/bonecoNPC.png',
         interacted: false
     },
     {
         id: 'Witch',
         x: 1500,
         type: 'Bruxa',
-        sprite: '../img/bruxa.png',
+        sprite: '../img/pps/bruxa.png',
         interacted: false
     }
 ];
