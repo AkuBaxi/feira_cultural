@@ -175,6 +175,13 @@ document.addEventListener('keydown', (e) => {
     }
 });
 
+function openAbout() {
+    switchMenu('mainMenu', 'aboutMenu');
+}
+
+// Add to your event listeners
+window.openAbout = openAbout;
+
 // Expor funções necessárias globalmente
 window.handleStartJourney = handleStartJourney;
 window.selectNormalMode = selectNormalMode;

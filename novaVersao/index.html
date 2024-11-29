@@ -2,17 +2,26 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <title>TESTE IA</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TESTE IA - Menu Principal</title>
+    <link rel="stylesheet" href="./css/styles.css">
 </head>
 <body>
     <div class="container">
         <div id="mainMenu" class="menu">
-            <h1>TESTE IA</h1>
-            <button onclick="handleStartJourney()">▶ Iniciar Jornada</button>
-            <button onclick="openLoadGame()">📁 Carregar Jogo</button>
-            <button onclick="openSettings()">⚙️ Opções</button>
-            <a href="sobre.html"><button onclick="openAbout()">ℹ️ Sobre</button></a>
+            <h1><i>X- IA</i></h1>
+            <button onclick="handleStartJourney()">
+                <span>▶</span> Iniciar Jornada
+            </button>
+            <button onclick="openLoadGame()">
+                <span>📁</span> Carregar Jogo
+            </button>
+            <button onclick="openSettings()">
+                <span>⚙️</span> Opções
+            </button>
+            <button onclick="openAbout()">
+                <span>ℹ️</span> Sobre
+            </button>
         </div>
 
         <div id="gameModeMenu" class="menu hidden">
@@ -21,17 +30,13 @@
                 <h3>🎮 Modo Normal</h3>
                 <p>Experiência completa com controles livres</p>
             </div>
-            <!-- <div class="game-mode">
-                <h3>🎯 Modo Simplificado</h3>
-                <p>Navegação por pontos com história focada</p>
-            </div> -->
             <button onclick="backToMainMenu()">Voltar</button>
         </div>
 
         <div id="loadGameMenu" class="menu hidden">
             <h2>Carregar Jogo</h2>
             <div id="saves-container">
-                <!-- Os saves serão renderizados aqui -->
+                <!-- Saves serão carregados dinamicamente aqui -->
             </div>
             <div class="menu-buttons">
                 <button onclick="backToMainMenu()">Voltar</button>
@@ -42,23 +47,33 @@
             <h2>Selecione a Fase</h2>
             <div class="phase" data-phase="1">
                 <span class="phase-icon">🏰</span>
-                <h3>A bruxa Clandestina</h3>
+                <div>
+                    <h3>A bruxa Clandestina</h3>
+                </div>
             </div>
             <div class="phase" data-phase="2">
                 <span class="phase-icon">🌑</span>
-                <h3>A velinha e as flores mágicas </h3>
+                <div>
+                    <h3>A velinha e as flores mágicas</h3>
+                </div>
             </div>
             <div class="phase" data-phase="3">
                 <span class="phase-icon">❄️</span>
-                <h3>O livro proibido</h3>
+                <div>
+                    <h3>O livro proibido</h3>
+                </div>
             </div>
             <div class="phase" data-phase="4">
                 <span class="phase-icon">🌳</span>
-                <h3>O companheiro perdido</h3>
+                <div>
+                    <h3>O companheiro perdido</h3>
+                </div>
             </div>
             <div class="phase" data-phase="5">
                 <span class="phase-icon">🏯</span>
-                <h3>O ferreiro Doente </h3>
+                <div>
+                    <h3>O ferreiro Doente</h3>
+                </div>
             </div>
             <button onclick="backToGameMode()">Voltar</button>
         </div>
@@ -67,7 +82,8 @@
             <h2>Configurações</h2>
             <div class="settings-option">
                 <label>Volume Geral</label>
-                <input type="range" min="0" max="100" value="100" onchange="updateVolume(this.value)">
+                <input type="range" min="0" max="100" value="100" 
+                       oninput="updateVolume(this.value)">
                 <span id="volumeValue">100</span>
             </div>
             <div class="settings-option">
@@ -81,10 +97,36 @@
             </div>
             <button onclick="backToMainMenu()">Voltar</button>
         </div>
-        
-    </div>
 
-    <script src="js/save-manager.js"></script>
-    <script src="js/script.js"></script>
+        <div id="aboutMenu" class="menu hidden">
+            <h2>Sobre o Projeto</h2>
+            <div class="about-content">
+                <h3>X - AI</h3>
+                <p>Uma iniciativa inovadora que utiliza inteligência artificial para avaliar a reputação política em tempo real.</p>
+                
+                <h3>Recursos Principais</h3>
+                <div class="about-features">
+                    <div class="feature">
+                        <span>🤖</span>
+                        <p>Deep Learning & IA Avançada</p>
+                    </div>
+                    <div class="feature">
+                        <span>📊</span>
+                        <p>Análise em Tempo Real</p>
+                    </div>
+                    <div class="feature">
+                        <span>🔄</span>
+                        <p>Aprendizado Contínuo</p>
+                    </div>
+                </div>
+                <h3>Desenvolvimento</h3>
+        <p>Desenvolvido pelos alunos do 3º Ano do Ensino Médio Técnico em Tecnologia da Informação do Colégio Victorino.</p>
+        
+                <p class="about-footer">Versão 1.0 - 2024</p>
+            </div>
+            <button onclick="backToMainMenu()">Voltar</button>
+        </div>
+    <script src="./js/script.js"></script>
+    <script src="./js/save-manager.js"></script>
 </body>
 </html>

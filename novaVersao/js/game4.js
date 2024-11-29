@@ -353,7 +353,7 @@ function showOptions() {
 }
 
 function backToMenu() {
-    window.location.href = 'index.html';
+    window.location.href = '../index.html';
 }
 
 // Sistema de Reputação e Status

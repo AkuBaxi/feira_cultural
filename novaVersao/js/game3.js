@@ -352,7 +352,7 @@ function showOptions() {
 }
 
 function backToMenu() {
-    window.location.href = 'index.html';
+    window.location.href = '../index.htmlindex';
 }
 
 // Sistema de Reputação e Status
