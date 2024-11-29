@@ -1,6 +1,5 @@
 // Configurações globais
 const settings = {
-    volume: 100,
     colorMode: 'normal'
 };
 
@@ -66,10 +65,6 @@ function openSettings() {
     switchMenu('mainMenu', 'settingsMenu');
 }
 
-function updateVolume(value) {
-    settings.volume = value;
-    document.getElementById('volumeValue').textContent = value;
-}
 
 function updateColorMode(mode) {
     settings.colorMode = mode;
@@ -93,7 +88,7 @@ function applyColorMode(mode) {
             break;
         default:
             root.style.setProperty('--primary-green', '#4CAF50');
-            root.style.setProperty('--menu-bg', '#4A2618');
+            root.style.setProperty('--menu-bg', '#2b3d2f');
     }
 }
 

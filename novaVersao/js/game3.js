@@ -437,27 +437,27 @@ function showEndGameReport() {
   endReport.style.display = 'flex';
 }
 
-function restartGame() {
-    npcs.forEach(npc => {
-        npc.interacted = false;
-    });
+// function restartGame() {
+//     npcs.forEach(npc => {
+//         npc.interacted = false;
+//     });
     
     
 
-    playerX = 100;
-    worldX = 0;
-    reputation = 0;
-    isDialogActive = false;
-    currentNPC = null;
-    isPaused = false;
+//     playerX = 100;
+//     worldX = 0;
+//     reputation = 0;
+//     isDialogActive = false;
+//     currentNPC = null;
+//     isPaused = false;
 
-    updateReputationBar();
-    gameWorld.style.left = '0px';
-    player.style.left = '100px';
-    endReport.style.display = 'none';
+//     updateReputationBar();
+//     gameWorld.style.left = '0px';
+//     player.style.left = '100px';
+//     endReport.style.display = 'none';
     
-    gameLoopId = requestAnimationFrame(gameLoop);
-}
+//     gameLoopId = requestAnimationFrame(gameLoop);
+// }
 
 // Inicialização e carregamento
 document.addEventListener('DOMContentLoaded', () => {
