@@ -21,6 +21,28 @@ window.onload = () => {
 };
 
 
+// Lista de dicas para o jogador
+const tips = [
+    "Use as setas ou as teclas WASD para se mover pelo mapa.",
+    "Pressione 'E' ou 'Enter' para interagir com NPCs próximos.",
+    "Cuide de sua reputação, pois ela afeta o final do jogo!",
+    "Visite todas as estruturas para desbloquear conquistas.",
+    "Use a tecla 'Esc' para pausar o jogo e acessar o menu."
+];
+
+// Variáveis para o sistema de dicas
+let currentTipIndex = 0;
+const tipTextElement = document.getElementById('tip-text');
+
+// Função para atualizar as dicas no bloco
+function updateTip() {
+    tipTextElement.textContent = tips[currentTipIndex];
+    currentTipIndex = (currentTipIndex + 1) % tips.length; // Passa para a próxima dica
+}
+
+// Configura o sistema de slides
+setInterval(updateTip, 5000); // Muda a dica a cada 5 segundos
+
 // Elementos do DOM
 const player = document.getElementById('player');
 const dialogBox = document.getElementById('dialog-box');
@@ -56,59 +78,21 @@ const fallSpeed = 15;
 // NPCs do jogo
 const npcs = [
     {
-        id: 'merchant',
-        x: 300,
-        type: 'Mercador',
-        sprite: '..img/bonecoNPCTeste.png',
-        interacted: false
-    },
-    {
-        id: 'Villager',
-        x: 800,
-        type: 'Aldeão',
-        sprite: '..img/bonecoNPCTeste.png',
-        interacted: false
-    },
-    {
         id: 'Old lady of flowers',
         x: 1500,
-        type: 'Velha das floreso',
+        type: 'Laura da Silva das Flores Francisco',
         sprite: '../img/velhaFlor.png',
         interacted: false
     }
 ];
 
 // Estruturas do mundo
-const structures = [
-    { x: 500, width: 100, height: 150, color: 'rgba(139, 69, 19, 0.7)', type: 'house', visited: false },
-    { x: 1200, width: 150, height: 200, color: 'rgba(74, 74, 74, 0.7)', type: 'tower', visited: false },
-    { x: 2000, width: 120, height: 180, color: 'rgba(139, 69, 19, 0.7)', type: 'inn', visited: false }
-];
+
 
 // Sistema de diálogo
 function getNPCDialog(npcType) {
     const dialogues = {
-        'Mercador': {
-            text: "Olá, viajante! Deseja comprar algo?",
-            choices: [
-                { text: "Sim, quero ver suas mercadorias", effect: 1 },
-                { text: "Não, obrigado", effect: -1 }
-            ]
-        },
-        'Aldeão': {
-            text: "Nossa vila precisa de ajuda. Você pode nos ajudar?",
-            choices: [
-                { text: "Claro, conte comigo!", effect: 2 },
-                { text: "Desculpe, não tenho tempo", effect: -1 }
-            ]
-        },
-        'Mago': {
-            text: "Os segredos da magia são profundos. O que busca?",
-            choices: [
-                { text: "Quero aprender magia", effect: 1 },
-                { text: "Só estava passando", effect: 0 }
-            ]
-        }
+        
     };
 
     return new Promise((resolve) => {
@@ -130,15 +114,7 @@ function createWorldElements() {
         gameWorld.appendChild(npcElement);
     });
 
-    structures.forEach(structure => {
-        const structureElement = document.createElement('div');
-        structureElement.className = 'structure';
-        structureElement.style.backgroundColor = structure.color;
-        structureElement.style.width = `${structure.width}px`;
-        structureElement.style.height = `${structure.height}px`;
-        structureElement.style.left = `${structure.x}px`;
-        gameWorld.appendChild(structureElement);
-    });
+    
 }
 
 // Sistema de movimento
@@ -222,11 +198,7 @@ function gameLoop() {
             gameContainer.style.backgroundPosition = `${worldX * 0.5}px 0`;
         }
 
-        structures.forEach(structure => {
-            if (Math.abs(playerX - structure.x) < 100) {
-                structure.visited = true;
-            }
-        });
+        
     }
     gameLoopId = requestAnimationFrame(gameLoop);
 }
@@ -314,10 +286,7 @@ function saveCurrentGameState() {
                 interacted: npc.interacted,
                 type: npc.type
             })),
-            structures: structures.map(structure => ({
-                type: structure.type,
-                visited: structure.visited
-            }))
+            
         };
 
         const saveData = {
@@ -388,11 +357,6 @@ function calculateAchievements() {
             name: 'Diplomata',
             description: 'Interagir com todos os NPCs',
             unlocked: npcs.every(npc => npc.interacted)
-        },
-        {
-            name: 'Explorador',
-            description: 'Visitar todas as estruturas',
-            unlocked: structures.every(structure => structure.visited)
         }
     ];
 }
@@ -444,9 +408,6 @@ function restartGame() {
         npc.interacted = false;
     });
     
-    structures.forEach(structure => {
-        structure.visited = false;
-    });
 
     playerX = 100;
     worldX = 0;

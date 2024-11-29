@@ -4,7 +4,7 @@ function fadeOut() {
     fadeElement.style.opacity = '0'; // Inicia o fade-out
     setTimeout(() => {
         fadeElement.style.display = 'none'; // Remove o fade após a transição
-    }, 5000); // O tempo do fade-out é de 2 segundos
+    }, 5000); // O tempo do fade-out é de 5 segundos
 }
 
 // Função para inicializar o jogo e fazer o fade-in
@@ -19,6 +19,29 @@ window.onload = () => {
         gameLoopId = requestAnimationFrame(gameLoop); // Inicia o loop do jogo
     }, 5000); // Espera o tempo do fade antes de começar o jogo
 };
+
+
+// Lista de dicas para o jogador
+const tips = [
+    "Use as setas ou as teclas WASD para se mover pelo mapa.",
+    "Pressione 'E' ou 'Enter' para interagir com NPCs próximos.",
+    "Cuide de sua reputação, pois ela afeta o final do jogo!",
+    "Visite todas as estruturas para desbloquear conquistas.",
+    "Use a tecla 'Esc' para pausar o jogo e acessar o menu."
+];
+
+// Variáveis para o sistema de dicas
+let currentTipIndex = 0;
+const tipTextElement = document.getElementById('tip-text');
+
+// Função para atualizar as dicas no bloco
+function updateTip() {
+    tipTextElement.textContent = tips[currentTipIndex];
+    currentTipIndex = (currentTipIndex + 1) % tips.length; // Passa para a próxima dica
+}
+
+// Configura o sistema de slides
+setInterval(updateTip, 5000); // Muda a dica a cada 5 segundos
 
 
 // Elementos do DOM
@@ -78,46 +101,63 @@ const npcs = [
     }
 ];
 
-// Estruturas do mundo
-const structures = [
-    { x: 500, width: 100, height: 150, color: 'rgba(139, 69, 19, 0.7)', type: 'house', visited: false },
-    { x: 1200, width: 150, height: 200, color: 'rgba(74, 74, 74, 0.7)', type: 'tower', visited: false },
-    { x: 2000, width: 120, height: 180, color: 'rgba(139, 69, 19, 0.7)', type: 'inn', visited: false }
-];
 
 // Sistema de diálogo
 function getNPCDialog(npcType) {
     const dialogues = {
-        'Mercador': {
-            text: "Olá, viajante! Deseja comprar algo?",
+        'Guarda': {
+            text: "Sou Marcos, guarda desta vila há 15 anos. Vi muita coisa mudar por aqui...",
             choices: [
-                { text: "Sim, quero ver suas mercadorias", effect: 1 },
-                { text: "Não, obrigado", effect: -1 }
+                { text: "Conte-me sobre a vila", effect: 1, 
+                  response: "Nossa vila sempre foi pacífica, mas últimamente estranhos rumores circulam. Feiticeiras na floresta, criaturas nas sombras..." },
+                { text: "Qual é o seu trabalho?", effect: 0, 
+                  response: "Protejo as pessoas. Não é um trabalho fácil, mas alguém precisa manter a ordem." },
+                { text: "Parece entediado", effect: -1, 
+                  response: "Entediado? Cada dia pode ser o último para um guarda. Não brinque com meu trabalho!" }
             ]
         },
         'Aldeão': {
-            text: "Nossa vila precisa de ajuda. Você pode nos ajudar?",
+            text: "Olá, sou Ana. Trabalho na plantação com minha família há gerações.",
             choices: [
-                { text: "Claro, conte comigo!", effect: 2 },
-                { text: "Desculpe, não tenho tempo", effect: -1 }
+                { text: "Como é a vida aqui?", effect: 1, 
+                  response: "Não é fácil. As colheitas têm sido ruins, e os impostos aumentando. Mas mantemos a esperança." },
+                { text: "Precisa de ajuda?", effect: 2, 
+                  response: "Na verdade, sim! Se pudesse nos ajudar com a colheita ou falar com o prefeito sobre os impostos, seria uma bênção." },
+                { text: "Parece difícil", effect: -1, 
+                  response: "Difícil? Você não sabe o significado de difícil. Volte quando souber o que é trabalhar de sol a sol." }
             ]
         },
-        'Mago': {
-            text: "Os segredos da magia são profundos. O que busca?",
+        'Bruxa': {
+            text: "Venho de terras distantes. Meu nome é Selene, e os segredos da natureza me guiam.",
             choices: [
-                { text: "Quero aprender magia", effect: 1 },
-                { text: "Só estava passando", effect: 0 }
+                { text: "Fale sobre sua magia", effect: 1, 
+                  response: "A magia não é um poder, é um equilíbrio. Cada erva, cada pedra, cada vento conta uma história." },
+                { text: "Você é perigosa?", effect: 0, 
+                  response: "Perigosa? Depende. Os tolos me temem, os sábios me respeitam. A natureza não é boa nem má, simplesmente é." },
+                { text: "Bruxaria é mentira", effect: -2, 
+                  response: "Ignore o que não compreende. A ignorância é a verdadeira escuridão." }
             ]
         }
     };
 
     return new Promise((resolve) => {
-        resolve(dialogues[npcType] || {
+        const dialog = dialogues[npcType] || {
             text: "...",
-            choices: [{ text: "Ok", effect: 0 }]
-        });
+            choices: [{ text: "Ok", effect: 0, response: "..." }]
+        };
+        
+        const enhancedDialog = {
+            ...dialog,
+            choices: dialog.choices.map(choice => ({
+                ...choice,
+                narrativeResponse: choice.response || "..."
+            }))
+        };
+        
+        resolve(enhancedDialog);
     });
 }
+
 
 // Criação dos elementos do mundo
 function createWorldElements() {
@@ -130,15 +170,7 @@ function createWorldElements() {
         gameWorld.appendChild(npcElement);
     });
 
-    structures.forEach(structure => {
-        const structureElement = document.createElement('div');
-        structureElement.className = 'structure';
-        structureElement.style.backgroundColor = structure.color;
-        structureElement.style.width = `${structure.width}px`;
-        structureElement.style.height = `${structure.height}px`;
-        structureElement.style.left = `${structure.x}px`;
-        gameWorld.appendChild(structureElement);
-    });
+    
 }
 
 // Sistema de movimento
@@ -222,11 +254,7 @@ function gameLoop() {
             gameContainer.style.backgroundPosition = `${worldX * 0.5}px 0`;
         }
 
-        structures.forEach(structure => {
-            if (Math.abs(playerX - structure.x) < 100) {
-                structure.visited = true;
-            }
-        });
+        
     }
     gameLoopId = requestAnimationFrame(gameLoop);
 }
@@ -257,7 +285,22 @@ function showDialog(dialog) {
         const button = document.createElement('button');
         button.textContent = choice.text;
         button.classList.add('choice-button');
-        button.onclick = () => handleChoice(choice, dialog);
+        button.onclick = () => {
+            // Mostrar a resposta narrativa
+            dialogText.textContent = choice.narrativeResponse;
+            
+            // Limpar as escolhas após selecionar
+            choiceContainer.innerHTML = '';
+            
+            // Adicionar botão para continuar
+            const continueButton = document.createElement('button');
+            continueButton.textContent = 'Continuar';
+            continueButton.classList.add('choice-button');
+            continueButton.onclick = () => {
+                handleChoice(choice, dialog);
+            };
+            choiceContainer.appendChild(continueButton);
+        };
         choiceContainer.appendChild(button);
     });
 }
@@ -314,10 +357,7 @@ function saveCurrentGameState() {
                 interacted: npc.interacted,
                 type: npc.type
             })),
-            structures: structures.map(structure => ({
-                type: structure.type,
-                visited: structure.visited
-            }))
+           
         };
 
         const saveData = {
@@ -388,11 +428,6 @@ function calculateAchievements() {
             name: 'Diplomata',
             description: 'Interagir com todos os NPCs',
             unlocked: npcs.every(npc => npc.interacted)
-        },
-        {
-            name: 'Explorador',
-            description: 'Visitar todas as estruturas',
-            unlocked: structures.every(structure => structure.visited)
         }
     ];
 }
@@ -444,9 +479,6 @@ function restartGame() {
         npc.interacted = false;
     });
     
-    structures.forEach(structure => {
-        structure.visited = false;
-    });
 
     playerX = 100;
     worldX = 0;

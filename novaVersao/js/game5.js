@@ -20,7 +20,27 @@ window.onload = () => {
     }, 5000); // Espera o tempo do fade antes de começar o jogo
 };
 
+// Lista de dicas para o jogador
+const tips = [
+    "Use as setas ou as teclas WASD para se mover pelo mapa.",
+    "Pressione 'E' ou 'Enter' para interagir com NPCs próximos.",
+    "Cuide de sua reputação, pois ela afeta o final do jogo!",
+    "Visite todas as estruturas para desbloquear conquistas.",
+    "Use a tecla 'Esc' para pausar o jogo e acessar o menu."
+];
 
+// Variáveis para o sistema de dicas
+let currentTipIndex = 0;
+const tipTextElement = document.getElementById('tip-text');
+
+// Função para atualizar as dicas no bloco
+function updateTip() {
+    tipTextElement.textContent = tips[currentTipIndex];
+    currentTipIndex = (currentTipIndex + 1) % tips.length; // Passa para a próxima dica
+}
+
+// Configura o sistema de slides
+setInterval(updateTip, 5000); // Muda a dica a cada 5 segundos
 
 const player = document.getElementById('player');
 const dialogBox = document.getElementById('dialog-box');
@@ -78,11 +98,7 @@ const npcs = [
     }
 ];
 // Estruturas do mundo
-const structures = [
-    { x: 500, width: 100, height: 150, color: 'rgba(139, 69, 19, 0.7)', type: 'house', visited: false },
-    { x: 1200, width: 150, height: 200, color: 'rgba(74, 74, 74, 0.7)', type: 'tower', visited: false },
-    { x: 2000, width: 120, height: 180, color: 'rgba(139, 69, 19, 0.7)', type: 'inn', visited: false }
-];
+
 
 // Sistema de diálogo
 function getNPCDialog(npcType) {
@@ -129,15 +145,7 @@ function createWorldElements() {
         gameWorld.appendChild(npcElement);
     });
 
-    structures.forEach(structure => {
-        const structureElement = document.createElement('div');
-        structureElement.className = 'structure';
-        structureElement.style.backgroundColor = structure.color;
-        structureElement.style.width = `${structure.width}px`;
-        structureElement.style.height = `${structure.height}px`;
-        structureElement.style.left = `${structure.x}px`;
-        gameWorld.appendChild(structureElement);
-    });
+    
 }
 
 // Sistema de movimento
@@ -221,11 +229,7 @@ function gameLoop() {
             gameContainer.style.backgroundPosition = `${worldX * 0.5}px 0`;
         }
 
-        structures.forEach(structure => {
-            if (Math.abs(playerX - structure.x) < 100) {
-                structure.visited = true;
-            }
-        });
+        
     }
     gameLoopId = requestAnimationFrame(gameLoop);
 }
@@ -313,10 +317,7 @@ function saveCurrentGameState() {
                 interacted: npc.interacted,
                 type: npc.type
             })),
-            structures: structures.map(structure => ({
-                type: structure.type,
-                visited: structure.visited
-            }))
+           
         };
 
         const saveData = {
@@ -387,12 +388,8 @@ function calculateAchievements() {
             name: 'Diplomata',
             description: 'Interagir com todos os NPCs',
             unlocked: npcs.every(npc => npc.interacted)
-        },
-        {
-            name: 'Explorador',
-            description: 'Visitar todas as estruturas',
-            unlocked: structures.every(structure => structure.visited)
         }
+        
     ];
 }
 
@@ -443,9 +440,6 @@ function restartGame() {
         npc.interacted = false;
     });
     
-    structures.forEach(structure => {
-        structure.visited = false;
-    });
 
     playerX = 100;
     worldX = 0;
