@@ -77,7 +77,6 @@ const npcs = [
         interacted: false
     }
 ];
- 
 
 // Estruturas do mundo
 const structures = [
