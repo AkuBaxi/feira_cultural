@@ -11,9 +11,6 @@ if (!sessionStorage.getItem(SAVES_KEY)) {
 
 // Em save-manager.js, adicione um método para filtrar saves por fase
 
-    
-
-
 
 
 
@@ -23,9 +20,6 @@ const GameSaveManager = {
     filterSavesByPhase(phase) {
         return this.saveStates.filter(save => save.phase === phase);
     },
-
-
-
     
     get saveStates() {
         return JSON.parse(sessionStorage.getItem(SAVES_KEY) || '[]');
@@ -139,8 +133,8 @@ const GameSaveManager = {
         if (save && save.gameState) {
             // Use o número da fase do save para redirecionar para a fase correta
             sessionStorage.setItem('selectedSave', JSON.stringify(save));
-            window.location.href = `fase${save.phase}.html?loadSave=true`;
-        } else {
+            window.location.href = `./fases/game${save.phase}.html?loadSave=true`;
+        } else {                    
             console.error('Save não encontrado ou inválido');
             alert('Erro ao carregar o save. Tente novamente.');
         }

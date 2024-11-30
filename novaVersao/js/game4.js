@@ -78,24 +78,10 @@ const fallSpeed = 15;
 // NPCs do jogo
 const npcs = [
     {
-        id: 'merchant',
-        x: 300,
-        type: 'Mercador',
-        sprite: '../img/pps/bonecoNPC.png',
-        interacted: false
-    },
-    {
-        id: 'Villager',
-        x: 800,
-        type: 'Aldeão',
-        sprite: '../img/pps/bonecoNPC.png',
-        interacted: false
-    },
-    {
         id: 'wolf',
         x: 1500,
         type: 'Lobo',
-        sprite: '../img/lobo.png',
+        sprite: '../img/pps/lobo.png',
         interacted: false
     }
 ];
@@ -103,37 +89,24 @@ const npcs = [
 // Sistema de diálogo
 function getNPCDialog(npcType) {
     const dialogues = {
-        'Guarda': {
-            text: "Sou Marcos, guarda desta vila há 15 anos. Vi muita coisa mudar por aqui...",
+        'Lobo': {
+            text: "Você encontra um lobo mágico ferido na floresta. O que faz?",
             choices: [
-                { text: "Conte-me sobre a vila", effect: 1, 
-                  response: "Nossa vila sempre foi pacífica, mas últimamente estranhos rumores circulam. Feiticeiras na floresta, criaturas nas sombras..." },
-                { text: "Qual é o seu trabalho?", effect: 0, 
-                  response: "Protejo as pessoas. Não é um trabalho fácil, mas alguém precisa manter a ordem." },
-                { text: "Parece entediado", effect: -1, 
-                  response: "Entediado? Cada dia pode ser o último para um guarda. Não brinque com meu trabalho!" }
-            ]
-        },
-        'Aldeão': {
-            text: "Olá, sou Ana. Trabalho na plantação com minha família há gerações.",
-            choices: [
-                { text: "Como é a vida aqui?", effect: 1, 
-                  response: "Não é fácil. As colheitas têm sido ruins, e os impostos aumentando. Mas mantemos a esperança." },
-                { text: "Precisa de ajuda?", effect: 2, 
-                  response: "Na verdade, sim! Se pudesse nos ajudar com a colheita ou falar com o prefeito sobre os impostos, seria uma bênção." },
-                { text: "Parece difícil", effect: -1, 
-                  response: "Difícil? Você não sabe o significado de difícil. Volte quando souber o que é trabalhar de sol a sol." }
-            ]
-        },
-        'Bruxa': {
-            text: "Venho de terras distantes. Meu nome é Selene, e os segredos da natureza me guiam.",
-            choices: [
-                { text: "Fale sobre sua magia", effect: 1, 
-                  response: "A magia não é um poder, é um equilíbrio. Cada erva, cada pedra, cada vento conta uma história." },
-                { text: "Você é perigosa?", effect: 0, 
-                  response: "Perigosa? Depende. Os tolos me temem, os sábios me respeitam. A natureza não é boa nem má, simplesmente é." },
-                { text: "Bruxaria é mentira", effect: -2, 
-                  response: "Ignore o que não compreende. A ignorância é a verdadeira escuridão." }
+                {
+                    text: "Cuidar do lobo ferido e tentar salvá-lo.",
+                    effect: 2,
+                    response: "Você cuidou do lobo, que se tornou seu fiel companheiro e te ajudou em momentos difíceis."
+                },
+                {
+                    text: "Deixá-lo onde está, achando que a natureza deve seguir seu curso.",
+                    effect: -1,
+                    response: "Você deixou o lobo para trás. Mais tarde, descobriu que ele era o guardião de um artefato mágico que foi roubado."
+                },
+                {
+                    text: "Pedir ajuda em uma vila próxima antes de tentar ajudar o lobo.",
+                    effect: 1,
+                    response: "Você buscou ajuda na vila, e o lobo foi curado. Ele te recompensou com um item mágico contra venenos."
+                }
             ]
         }
     };
@@ -294,7 +267,7 @@ function restartGame() {
  }
 
 
-function showDialog(dialog) {
+ function showDialog(dialog) {
     isDialogActive = true;
     dialogBox.style.display = 'block';
     dialogText.textContent = dialog.text;
@@ -304,7 +277,22 @@ function showDialog(dialog) {
         const button = document.createElement('button');
         button.textContent = choice.text;
         button.classList.add('choice-button');
-        button.onclick = () => handleChoice(choice, dialog);
+        button.onclick = () => {
+            // Mostrar a resposta narrativa
+            dialogText.textContent = choice.narrativeResponse;
+            
+            // Limpar as escolhas após selecionar
+            choiceContainer.innerHTML = '';
+            
+            // Adicionar botão para continuar
+            const continueButton = document.createElement('button');
+            continueButton.textContent = 'Continuar';
+            continueButton.classList.add('choice-button');
+            continueButton.onclick = () => {
+                handleChoice(choice, dialog);
+            };
+            choiceContainer.appendChild(continueButton);
+        };
         choiceContainer.appendChild(button);
     });
 }
@@ -322,7 +310,9 @@ function handleChoice(choice, dialog) {
 
     const allInteracted = npcs.every(npc => npc.interacted);
     if (allInteracted) {
-        showEndGameReport();
+        setTimeout(() => {
+            showEndGameReport();
+        }, 5000); // 8000 milissegundos = 8 segundos
     }
 
     currentNPC = null;

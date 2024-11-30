@@ -320,7 +320,9 @@ function handleChoice(choice, dialog) {
 
     const allInteracted = npcs.every(npc => npc.interacted);
     if (allInteracted) {
-        showEndGameReport();
+        setTimeout(() => {
+            showEndGameReport();
+        }, 5000); // 8000 milissegundos = 8 segundos
     }
 
     currentNPC = null;
