@@ -399,8 +399,8 @@ function updateReputationBar() {
 }
 
 function getPlayerStatus(reputation) {
-    if (reputation >= 4) return 'Herói';
-    if (reputation <= -4) return 'Vilão';
+    if (reputation >= 1) return 'Herói';
+    if (reputation <= -1) return 'Vilão';
     return 'Neutro';
 }
 
