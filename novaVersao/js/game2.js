@@ -79,12 +79,27 @@ const fallSpeed = 15;
 const npcs = [
     {
         id: 'Old lady of flowers',
-        x: 800,
+        x: 300,
         type: 'Laura da Silva das Flores Francisco',
+        sprite: '../img/pps/velhaFloresV2.png',
+        interacted: false
+    },
+    {
+        id: 'Old lady of flowers2',
+        x: 800,
+        type: 'Laura da Silva das Flores Francisco2',
+        sprite: '../img/pps/velhaFloresV2.png',
+        interacted: false
+    },
+    {
+        id: 'Old lady of flowers3',
+        x: 1500,
+        type: 'Laura da Silva das Flores Francisco3',
         sprite: '../img/pps/velhaFloresV2.png',
         interacted: false
     }
 ];
+
 
 // Estruturas do mundo
 
@@ -93,27 +108,35 @@ const npcs = [
 function getNPCDialog(npcType) {
     const dialogues = {
         'Laura da Silva das Flores Francisco': {
-            text: "Olá, sou Ana. Trabalho na plantação com minha família há gerações.",
-            text: "Uma velhinha te pede ajuda para regar suas flores mágicas antes do anoitecer. Como você reage?",
+            text: "Oh meu Fih, por favor me ajuda aqui, minha coluna dói",
             choices: [
-                {
-                    text: "Ajudar a velhinha a regar as flores com a água mágica.",
-                    effect: 2,
-                    response: "Você regou as flores com cuidado. Como recompensa, a velhinha te deu um ramo mágico que cura ferimentos rapidamente."
-                },
-                {
-                    text: "Ajudar a velhinha, mas usar um feitiço de aceleração para terminar rapidamente.",
-                    effect: -1,
-                    response: "Você usou um feitiço de aceleração, mas algumas plantas começaram a murchar. A velhinha ficou triste, mas agradeceu sua ajuda."
-                },
-                {
-                    text: "Recusar ajudar e seguir seu caminho.",
-                    effect: -2,
-                    response: "Você recusou ajudar. Mais tarde, ouviu rumores de que a velhinha sofreu um acidente e suas flores morreram."
-                }
+                { text: "Claro Senhora", effect: 2,
+            response:"que alma gentil você tem" },
+                { text: "Aff, ta bom", effect: -1,
+            response:" que personalidade forte.." }
             ]
         },
+        'Laura da Silva das Flores Francisco2': {
+            text: "Regue essas plantas por favor nobre forasteiro",
+            choices: [
+                { text: "Pode deixar vovó (Regar as plantas normalmente)", effect: 1,
+            response:"isso mesmo jovem"},
+                { text: "beleza então velhona (Regar com magia)", effect: -2,
+                response:"Minha nossa...que mal educado"
+            }
+            ]
+        },
+        'Laura da Silva das Flores Francisco3': {
+            text: "Obrigado pela ajuda meu jovem, minha coluna agradece, é perigoso ir sozinho, leve isso aqui",
+            choices: [
+                { text: "Não é preciso minha senhora, obrigado de qualquer forma ", effect: 3,
+            response:"Nada disso, eu insisto" },
+                { text: "valeu velha, até nunca mais", effect: -4, 
+            response:"QUE JOVEM RUDE, ME DEVOLVA"}
+            ]
+        }
     };
+
 
     return new Promise((resolve) => {
         const dialog = dialogues[npcType] || {

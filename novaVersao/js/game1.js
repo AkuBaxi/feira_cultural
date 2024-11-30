@@ -78,27 +78,28 @@ const maxJumpHeight = 300;
 const jumpSpeed = 20;
 const fallSpeed = 15;
 
+
 // NPCs do jogo
 const npcs = [
     {
-        id: 'Guard',
+        id: 'wicked',
         x: 300,
-        type: 'Guarda',
-        sprite: '../img/pps/guarda.png',
-        interacted: false
-    },
-    {
-        id: 'Villager',
-        x: 800,
-        type: 'Aldeão',
-        sprite: '../img/pps/bonecoNPC.png',
-        interacted: false
-    },
-    {
-        id: 'Witch',
-        x: 1500,
         type: 'Bruxa',
         sprite: '../img/pps/bruxa.png',
+        interacted: false
+    },
+    {
+        id: 'wicked2',
+        x: 800,
+        type: 'Bruxa2',
+        sprite: '../img/pps/bruxa.png',
+        interacted: false
+    },
+    {
+        id: 'Soldier',
+        x: 1500,
+        type: 'Guarda',
+        sprite: '../img/pps/guarda.png',
         interacted: false
     }
 ];
@@ -107,39 +108,33 @@ const npcs = [
 // Sistema de diálogo
 function getNPCDialog(npcType) {
     const dialogues = {
-        'Guarda': {
-            text: "Sou Marcos, guarda desta vila há 15 anos. Vi muita coisa mudar por aqui...",
-            choices: [
-                { text: "Conte-me sobre a vila", effect: 1, 
-                  response: "Nossa vila sempre foi pacífica, mas últimamente estranhos rumores circulam. Feiticeiras na floresta, criaturas nas sombras..." },
-                { text: "Qual é o seu trabalho?", effect: 0, 
-                  response: "Protejo as pessoas. Não é um trabalho fácil, mas alguém precisa manter a ordem." },
-                { text: "Parece entediado", effect: -1, 
-                  response: "Entediado? Cada dia pode ser o último para um guarda. Não brinque com meu trabalho!" }
-            ]
-        },
-        'Aldeão': {
-            text: "Olá, sou Ana. Trabalho na plantação com minha família há gerações.",
-            choices: [
-                { text: "Como é a vida aqui?", effect: 1, 
-                  response: "Não é fácil. As colheitas têm sido ruins, e os impostos aumentando. Mas mantemos a esperança." },
-                { text: "Precisa de ajuda?", effect: 2, 
-                  response: "Na verdade, sim! Se pudesse nos ajudar com a colheita ou falar com o prefeito sobre os impostos, seria uma bênção." },
-                { text: "Parece difícil", effect: -1, 
-                  response: "Difícil? Você não sabe o significado de difícil. Volte quando souber o que é trabalhar de sol a sol." }
-            ]
-        },
         'Bruxa': {
-            text: "Venho de terras distantes. Meu nome é Selene, e os segredos da natureza me guiam.",
+            text: "O que você quer? Não tenho tempo para visitantes enxeridos.",
             choices: [
-                { text: "Fale sobre sua magia", effect: 1, 
-                  response: "A magia não é um poder, é um equilíbrio. Cada erva, cada pedra, cada vento conta uma história." },
-                { text: "Você é perigosa?", effect: 0, 
-                  response: "Perigosa? Depende. Os tolos me temem, os sábios me respeitam. A natureza não é boa nem má, simplesmente é." },
-                { text: "Bruxaria é mentira", effect: -2, 
-                  response: "Ignore o que não compreende. A ignorância é a verdadeira escuridão." }
+                { text: "Vi o símbolo na parede. Não parece algo bom. Você está bem?", effect: 2,
+                response:"Eu sei o que parece, mas não sou uma bruxa. Essa magia é antiga, mas não maligna. Eu uso para sobreviver, mas isso é um crime aqui. Estão me caçando por conta das minhas origens..." },
+                { text: "Foi mal to vazando", effect: -1,
+                    response:"isso mesmo, de o fora daqui!!!"}
             ]
-        }
+        },
+        'Bruxa2': {
+            text: "Só queria poder voltar pra casa, minha familia...",
+            choices: [
+                { text: "entendo, vou te ajudar de alguma forma", effect: 3,
+            response:"SÉRIO?!?!? obrigado viajente muito obrigado mesmo" },
+                { text: "BRUXA MENTIROSA!!! IREI TE DENUNCIAR!!!", effect: -3,
+            response:"Por favor não faça isso!!!!" }
+            ]
+        },
+        'Guarda': {
+            text: "cidadão você parece preucupado, oque ouve?",
+            choices: [
+                { text: "SEU GUARDA VI UMA LOJA EM QUE A DONA É POSSIVELMENTE UMA BRUXA!", effect: 1,
+            response:"palma palma não priemos cânico, irei chamar reforços para prendela" },
+                { text: "Não é nada não se preucupe", effect: -1,
+            response:"Viajante se você disse..ta dito" }
+            ]
+        },
     };
 
     return new Promise((resolve) => {
