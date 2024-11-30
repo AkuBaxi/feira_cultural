@@ -1,0 +1,324 @@
+:root {
+    --primary-green: #4CAF50;
+    --menu-bg: #2b3d2f;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    background-image: url('../img/fundoPrincipal.gif');
+    background-size: cover;
+    min-height: 100vh;
+}
+
+.menu {
+    position: absolute;
+    left: 2rem; /* Mantém o menu à esquerda */
+    top: 50%; /* Posiciona no meio vertical */
+    transform: translateY(-50%); /* Centraliza verticalmente */
+    background-color: var(--menu-bg);
+    padding: 2rem;
+    border-radius: 10px;
+    width: 300px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+}
+
+
+.menu:not(.hidden) {
+    opacity: 1;
+    visibility: visible;
+}
+
+#gameModeMenu {
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+}
+
+#gameModeMenu button {
+    width: 150px;
+    margin: 1.5rem auto 0;
+    justify-content: center;
+}
+
+.menu h1, .menu h2 {
+    color: white;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.menu button {
+    width: 100%;
+    padding: 0.8rem;
+    margin: 0.5rem 0;
+    background-color: var(--primary-green);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1rem;
+}
+
+.menu button:hover {
+    background-color: #45a049;
+}
+
+.game-mode {
+    background-color: var(--primary-green);
+    padding: 1.5rem;
+    margin: 0.8rem 0;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.game-mode:hover {
+    background-color:var(--primary-green);
+}
+
+.game-mode h3 {
+    color: var(--menu-bg);
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    white-space: nowrap;
+}
+
+.game-mode p {
+    color: white;
+    margin: 5px 0 0 0;
+    white-space: nowrap;
+}
+
+.settings-option {
+    margin: 1.5rem 0;
+    color: white;
+}
+
+.settings-option label {
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.settings-option input[type="range"],
+.settings-option select {
+    width: 100%;
+    padding: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.hidden {
+    visibility: hidden;
+    opacity: 0;
+}
+
+.phase {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background-color: var(--primary-green);
+    padding: 1rem;
+    margin: 0.8rem 0;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* .phase-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
+} */
+.phase-icon {
+    font-size: 2rem;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.phase:hover {
+    background-color: #318645;
+}
+
+.phase h3 {
+    color: var(--menu-bg);
+    margin: 0;
+    text-align: center;
+}
+#phasesMenu button {
+    width: 150px;
+    margin: 1.5rem auto 0;
+    justify-content: center;
+}
+
+
+.saved-game {
+    background-color: #318645;
+    padding: 1.2rem;
+    margin: 1rem 0;
+    border-radius: 5px;
+    color: white;
+    transition: background-color 0.2s;
+}
+
+.saved-game:hover {
+    background-color: #476a4e;
+}
+
+.saved-game p {
+    margin: 5px 0;
+    font-size: 0.9rem;
+}
+
+.save-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.save-actions button {
+    flex: 1;
+    padding: 8px;
+    font-size: 0.9rem;
+}
+
+.no-saves {
+    color: #888;
+    text-align: center;
+    padding: 20px;
+}
+
+#saves-container {
+    max-height: 400px;
+    overflow-y: auto;
+    margin: 20px 0;
+    padding-right: 10px;
+}
+
+#saves-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+#saves-container::-webkit-scrollbar-track {
+    background: #318645;
+    border-radius: 4px;
+}
+
+#saves-container::-webkit-scrollbar-thumb {
+    background: #4CAF50;
+    border-radius: 4px;
+}
+
+.save-info {
+    margin-bottom: 10px;
+}
+
+.save-info p {
+    margin: 5px 0;
+    color: white;
+}
+
+.no-saves {
+    text-align: center;
+    color: #aaa;
+    padding: 20px;
+    font-style: italic;
+}
+
+/* Sobre */
+
+#aboutMenu {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--menu-bg);
+    padding: 2rem;
+    border-radius: 10px;
+    width: 400px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+}
+
+#aboutMenu:not(.hidden) {
+    opacity: 1;
+    visibility: visible;
+}
+
+.about-content {
+    color: white;
+    margin: 1rem 0;
+    line-height: 1.4;
+    text-align: center;
+}
+
+.about-content h2 {
+    color: white;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.about-content h3 {
+    color: var(--primary-green);
+    margin: 1rem 0 0.5rem 0;
+    text-align: center;
+}
+
+.about-content p {
+    margin: 0.5rem 0;
+    color: white;
+}
+
+.about-features {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin: 1rem 0;
+}
+
+.feature {
+    background-color: var(--primary-green);
+    padding: 1rem;
+    border-radius: 5px;
+    text-align: center;
+    transition: background-color 0.2s;
+}
+
+.feature:hover {
+    background-color: #318645;
+}
+
+.feature span {
+    font-size: 1.5rem;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.feature p {
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+.about-footer {
+    text-align: center;
+    color: #aaa;
+    font-size: 0.9rem;
+    margin-top: 1rem !important;
+}
+
+#aboutMenu button {
+    width: 150px;
+    margin: 1.5rem auto 0;
+    justify-content: center;
+}

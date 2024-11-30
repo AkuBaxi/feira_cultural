@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>X-IA</title>
+    <link rel="stylesheet" href="./css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <div id="mainMenu" class="menu">
+            <h1><i>X- IA</i></h1>
+            <button onclick="handleStartJourney()" id="te">
+                <span>▶</span> Iniciar Jornada
+            </button>
+            <button onclick="openLoadGame()">
+                <span>📁</span> Carregar Jogo
+            </button>
+            <button onclick="openSettings()">
+                <span>⚙️</span> Opções
+            </button>
+            <button onclick="openAbout()">
+                <span>ℹ️</span> Sobre
+            </button>
+        </div>
+
+        <div id="gameModeMenu" class="menu hidden">
+            <h2>Selecione o Modo de Jogo</h2>
+            <div class="game-mode" onclick="selectNormalMode()" id="ta">
+                <h3>🎮 Modo Normal</h3>
+                <p>Experiência completa com controles livres</p>
+            </div>
+            <button onclick="backToMainMenu()">Voltar</button>
+        </div>
+
+        <div id="loadGameMenu" class="menu hidden">
+            <h2>Carregar Jogo</h2>
+            <div id="saves-container">
+                <!-- Saves serão carregados dinamicamente aqui -->
+            </div>
+            <div class="menu-buttons">
+                <button onclick="backToMainMenu()">Voltar</button>
+            </div>
+        </div>
+
+        <div id="phasesMenu" class="menu hidden">
+            <h2>Selecione a Fase</h2>
+            <div class="phase" data-phase="1">
+                <span class="phase-icon">🏰</span>
+                <div>
+                    <h3>A bruxa Clandestina</h3>
+                </div>
+            </div>
+            <div class="phase" data-phase="2">
+                <span class="phase-icon">🌑</span>
+                <div>
+                    <h3>A velinha e as flores mágicas</h3>
+                </div>
+            </div>
+            <div class="phase" data-phase="3">
+                <span class="phase-icon">❄️</span>
+                <div>
+                    <h3>O livro proibido</h3>
+                </div>
+            </div>
+            <div class="phase" data-phase="4">
+                <span class="phase-icon">🌳</span>
+                <div>
+                    <h3>O companheiro perdido</h3>
+                </div>
+            </div>
+            <div class="phase" data-phase="5">
+                <span class="phase-icon">🏯</span>
+                <div>
+                    <h3>O ferreiro Doente</h3>
+                </div>
+            </div>
+            <button onclick="backToGameMode()">Voltar</button>
+        </div>
+
+        <div id="settingsMenu" class="menu hidden">
+            <h2>Configurações</h2>
+            <div class="settings-option">
+                <label>Modo Daltônico</label>
+                <select onchange="updateColorMode(this.value)">
+                    <option value="normal">Normal</option>
+                    <option value="protanopia">Protanopia</option>
+                    <option value="deuteranopia">Deuteranopia</option>
+                    <option value="tritanopia">Tritanopia</option>
+                </select>
+            </div>
+            <button onclick="backToMainMenu()">Voltar</button>
+        </div>
+
+        <div id="aboutMenu" class="menu hidden">
+            <h2>Sobre o Projeto</h2>
+            <div class="about-content">
+                <h3>X - AI</h3>
+                <p>Uma iniciativa inovadora que utiliza inteligência artificial para avaliar a reputação política em tempo real.</p>
+                
+                <h3>Recursos Principais</h3>
+                <div class="about-features">
+                    <div class="feature">
+                        <span>🤖</span>
+                        <p>Deep Learning & IA Avançada</p>
+                    </div>
+                    <div class="feature">
+                        <span>📊</span>
+                        <p>Análise em Tempo Real</p>
+                    </div>
+                    <div class="feature">
+                        <span>🔄</span>
+                        <p>Aprendizado Contínuo</p>
+                    </div>
+                </div>
+                <h3>Desenvolvimento</h3>
+        <p>Desenvolvido pelos alunos do 3º Ano do Ensino Médio Técnico em Tecnologia da Informação do Colégio Victorino.</p>
+        
+                <p class="about-footer">Versão 1.0 - 2024</p>
+            </div>
+            <button onclick="backToMainMenu()">Voltar</button>
+        </div>
+    <script src="./js/script.js"></script>
+    <script src="./js/save-manager.js"></script>
+</body>
+</html>
